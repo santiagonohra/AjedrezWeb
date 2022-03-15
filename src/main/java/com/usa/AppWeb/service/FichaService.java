@@ -9,25 +9,14 @@ import java.util.List;
 
 @Service
 public class FichaService {
-    @Autowired
-    private FichaRepository fichaRepository;
 
-    public Ficha save(Ficha ficha) {
-        return fichaRepository.save(ficha);
-    }
-
-    public List<Ficha> findAll(){
-        return (List<Ficha>) fichaRepository.getAll();
-    }
-
-    public EquipoFicha getEquipoFicha(Ficha ficha){
-        return ficha.getEquipo();
-    }
-
-    public boolean esMovValido(Casilla posInicial, Casilla posFinal, Ficha ficha){
+    public boolean esMovValido(TestCasilla posFinal, TestFicha ficha){
         boolean validez;
+        TestCasilla posInicial = new TestCasilla();
+        posInicial.setPosX(ficha.getPosX());
+        posInicial.setPosY(ficha.getPosY());
         if(ficha.getTipo()== TipoFicha.REY){
-            if(posInicial.equals(posFinal)){
+            if(posFinal.equals(posFinal)){
                 return false;
             }
             if(Math.abs(posFinal.getPosX()-posInicial.getPosX())<=1 && Math.abs(posFinal.getPosY()-posInicial.getPosY())<=1){

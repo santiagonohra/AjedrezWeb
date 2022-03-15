@@ -25,7 +25,23 @@ public class CasillaService {
         return(casilla.getFicha()!=null);
     }
 
-    public boolean mataFicha(Casilla casilla, Ficha ficha){
+    public boolean quitarFicha(Casilla casilla){
+        if(tieneFicha(casilla)){
+            casilla.setFicha(null);
+            return true;
+        }
+        return false;
+    }
+
+    public Ficha getFicha(Casilla casilla){
+        return casilla.getFicha();
+    }
+
+    public void setFicha(Casilla casilla, Ficha ficha){
+        casilla.setFicha(ficha);
+    }
+
+    /*public boolean mataFicha(Casilla casilla, Ficha ficha){
         if(tieneFicha(casilla)){
             if(casilla.getFicha().getEquipo()!=ficha.getEquipo()) {
                 ficha.getCasilla().setFicha(null);
@@ -35,7 +51,7 @@ public class CasillaService {
             }
         }
         return false;
-    }
+    }*/
 
 
 }

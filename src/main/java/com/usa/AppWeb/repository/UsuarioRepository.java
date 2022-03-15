@@ -28,4 +28,6 @@ public class UsuarioRepository {
 	public void delete(Usuario user) {
 		usuarioCRUDRepository.delete(user);
 	}
+
+
 }

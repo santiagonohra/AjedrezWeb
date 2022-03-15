@@ -1,10 +1,11 @@
 package com.usa.AppWeb.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name="casilla")
-public class Casilla {
+public class Casilla implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
