@@ -2,26 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Chess.IO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="css/myStyle.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/semantic.min.css">
+
+    <title>UI Login</title>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="./js/myScript.js"></script>
 <body>
-    <h1>Ingresar a Chess.IO</h1>
 
-<div>
-    <label><b>Nombre de Usuario</b></label>
-    <input id="userName" placeholder="Nombre de Usuario">
-    <br>
-    <br>
-    <label><b>Contraseña</b></label>
-    <input id="pwd" type="password" placeholder="Contraseña">
-    <br>
-    <br>
-    <button onclick="sendData()">Ingresar</button>
+<!--<img src="assets/thumb2-chess-pieces-chess-concepts-wood-chess-kings-and-pawns-chess.jpg">-->
+<div class="container">
+    <div class="login-container">
+        <div class="register">
+            <h2>Registrarse</h2>
+            <form action="">
+                <input type="text" placeholder="Usuario/Correo" class="nombre">
+                <input type="password" placeholder="Contraseña" class="pass">
+                <input type="password" placeholder="Confirma contraseña" class="repass">
+                <input type="submit" class="submit" value="REGISTRARSE">
+            </form>
+        </div>
+        <div class="login">
+            <h2>Iniciar Sesión</h2>
+            <input type="text" placeholder="Usuario/Correo" class="nombre">
+            <input type="password" placeholder="Contraseña" class="pass">
 
+            <div class="login-items">
+                <button class="iniciarSesion"><i class="iniciarSesion"></i> Iniciar Sesión</button>
+            </div>
+
+
+
+        </div>
+    </div>
 </div>
-<div id="misDatos"></div>
-
+</body>
+</html>
 </body>
 </html>
