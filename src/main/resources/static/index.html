@@ -2,20 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Chess</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/semantic.min.css">
+
+    <title>UI Login</title>
 </head>
-
 <body>
-<script src="js\tablero.js"></script>
-</body>
+<!--<img src="assets/thumb2-chess-pieces-chess-concepts-wood-chess-kings-and-pawns-chess.jpg">-->
+<header><h1>Chess.io</h1></header>
+<div class="container">
+    <div class="login-container">
+        <div class="register">
+            <h2>Registrarse</h2>
+            <form action="">
+                <input type="text" placeholder="Nombre de usuario" class="nombre">
+                <input type="text" placeholder="Correo" class="Correo">
+                <input type="password" placeholder="Contraseña" class="pass">
+                <input type="password" placeholder="Confirma contraseña" class="repass">
+                <input type="submit" class="submit" value="REGISTRARSE">
+            </form>
+        </div>
+        <div class="login">
+            <h2>Iniciar Sesión</h2>
+            <input type="text" placeholder="Usuario/Correo" class="nombre">
+            <input type="password" placeholder="Contraseña" class="pass">
 
-<div>
-    <input id="userName" placeholder="Nombre del usuario">
-    <input id="pwd" type="password" placeholder="Contraseña">
-    <input id="email" placeholder="Correo de usuario">
-
-    <button onclick= "sendData()">Enviar</button>
+            <div class="login-items">
+                <button class="iniciarSesion"><i class="iniciarSesion"></i> Iniciar Sesión</button>
+            </div>
+        </div>
+    </div>
 </div>
-
-<div id="misDatos"></div>
+</body>
+</html>
+</body>
 </html>
