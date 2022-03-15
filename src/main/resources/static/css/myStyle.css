@@ -1,0 +1,68 @@
+
+.parallax{
+    background-image: url('http://i.stack.imgur.com/jGlzr.png');
+    width: 1500px;
+    height: 650px;
+}
+.chessboard {
+    width: 480px;
+    height: 480px;
+    margin: 40px auto;
+    border: 1px solid #000000;
+}
+
+.black {
+    float: left;
+    width: 60px;
+    height: 60px;
+    background-color: #2471a3;
+    font-size: 45px;
+    text-align:center;
+    display: table-cell;
+    vertical-align:middle;
+    cursor: pointer;
+}
+
+.white {
+    float: left;
+    width: 60px;
+    height: 60px;
+    background-color: #85c1e9;
+    font-size: 45px;
+    text-align:center;
+    display: table-cell;
+    vertical-align:middle;
+    cursor: pointer;
+}
+
+.effect {
+    position:relative;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.effect:before, .effect:after {
+    content:"";
+    position:absolute;
+    z-index:-1;
+    -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:10px;
+    bottom:10px;
+    left:0;
+    right:0;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
+}
+
+.effect:after {
+    right:10px;
+    left:auto;
+    -webkit-transform:skew(8deg) rotate(3deg);
+    -moz-transform:skew(8deg) rotate(3deg);
+    -ms-transform:skew(8deg) rotate(3deg);
+    -o-transform:skew(8deg) rotate(3deg);
+    transform:skew(8deg) rotate(3deg);
+}

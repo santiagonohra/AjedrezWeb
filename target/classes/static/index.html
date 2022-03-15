@@ -2,26 +2,94 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Chess.IO</title>
+    <title>AJEDREZ</title>
+    <link href="css/myStyle.css" rel="stylesheet" type="text/css">
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="./js/myScript.js"></script>
+
+
+<script src="js/myScript.js"></script>
+
 <body>
-    <h1>Ingresar a Chess.IO</h1>
+<div class="parallax">
 
-<div>
-    <label><b>Nombre de Usuario</b></label>
-    <input id="userName" placeholder="Nombre de Usuario">
-    <br>
-    <br>
-    <label><b>Contraseña</b></label>
-    <input id="pwd" type="password" placeholder="Contraseña">
-    <br>
-    <br>
-    <button onclick="sendData()">Ingresar</button>
+    <div class="chessboard effect">
+        <div class="field white" id="a_8"><span id="ROOK4">&#9814;</span></div>
+        <div class="field black" id="b_8"><span id="KNIGHT4">&#9816;</span></div>
+        <div class="field white" id="c_8"><span id="BISHOP4">&#9815;</span></div>
+        <div class="field black" id="d_8"><span id="KING2">&#9813;</span></div>
+        <div class="field white" id="e_8"><span id="QUEEN2">&#9812;</span></div>
+        <div class="field black" id="f_8"><span id="BISHOP3">&#9815;</span></div>
+        <div class="field white" id="g_8"><span id="KNIGHT3">&#9816;</span></div>
+        <div class="field black" id="h_8"><span id="ROOK3">&#9814;</span></div>
+        <!-- 2nd -->
 
+        <div class="field black" id="a_7"><span id="PAWN9">&#9817;</span></div>
+        <div class="field white" id="b_7"><span id="PAWN10">&#9817;</span></div>
+        <div class="field black" id="c_7"><span id="PAWN11">&#9817;</span></div>
+        <div class="field white" id="d_7"><span id="PAWN12">&#9817;</span></div>
+        <div class="field black" id="e_7"><span id="PAWN13">&#9817;</span></div>
+        <div class="field white" id="f_7"><span id="PAWN14">&#9817;</span></div>
+        <div class="field black" id="g_7"><span id="PAWN15">&#9817;</span></div>
+        <div class="field white" id="h_7"><span id="PAWN16">&#9817;</span></div>
+        <!-- 3th -->
+        <div class="field white" id="a_6"></div>
+        <div class="field black" id="b_6"></div>
+        <div class="field white" id="c_6"></div>
+        <div class="field black" id="d_6"></div>
+        <div class="field white" id="e_6"></div>
+        <div class="field black" id="f_6"></div>
+        <div class="field white" id="g_6"></div>
+        <div class="field black" id="h_6"></div>
+        <!-- 4st -->
+        <div class="field black" id="a_5"></div>
+        <div class="field white" id="b_5"></div>
+        <div class="field black" id="c_5"></div>
+        <div class="field white" id="d_5"></div>
+        <div class="field black" id="e_5"></div>
+        <div class="field white" id="f_5"></div>
+        <div class="field black" id="g_5"></div>
+        <div class="field white" id="h_5"></div>
+        <!-- 5th -->
+        <div class="field white" id="a_4"></div>
+        <div class="field black" id="b_4"></div>
+        <div class="field white" id="c_4"></div>
+        <div class="field black" id="d_4"></div>
+        <div class="field white" id="e_4"></div>
+        <div class="field black" id="f_4"></div>
+        <div class="field white" id="g_4"></div>
+        <div class="field black" id="h_4"></div>
+        <!-- 6th -->
+        <div class="field black" id="a_3"></div>
+        <div class="field white" id="b_3"></div>
+        <div class="field black" id="c_3"></div>
+        <div class="field white" id="d_3"></div>
+        <div class="field black" id="e_3"></div>
+        <div class="field white" id="f_3"></div>
+        <div class="field black" id="g_3"></div>
+        <div class="field white" id="h_3"></div>
+        <!-- 7th -->
+        <div class="field white" id="a_2"><span id="PAWN1">&#9823;</span></div>
+        <div class="field black" id="b_2"><span id="PAWN2">&#9823;</span></div>
+        <div class="field white" id="c_2"><span id="PAWN3">&#9823;</span></div>
+        <div class="field black" id="d_2"><span id="PAWN4">&#9823;</span></div>
+        <div class="field white" id="e_2"><span id="PAWN5">&#9823;</span></div>
+        <div class="field black" id="f_2"><span id="PAWN6">&#9823;</span></div>
+        <div class="field white" id="g_2"><span id="PAWN7">&#9823;</span></div>
+        <div class="field black" id="h_2"><span id="PAWN8">&#9823;</span></div>
+        <!-- 8th -->
+        <div class="field black" id="a_1"><span id="ROOK2">&#9820;</span></div>
+        <div class="field white" id="b_1"><span id="KNIGHT2">&#9822;</span></div>
+        <div class="field black" id="c_1"><span id="BISHOP2">&#9821;</span></div>
+        <div class="field white" id="d_1"><span id="QUEEN1">&#9819;</span></div>
+        <div class="field black" id="e_1"><span id="KING1">&#9818;</span></div>
+        <div class="field white" id="f_1"><span id="BISHOP1">&#9821;</span></div>
+        <div class="field black" id="g_1"><span id="KNIGHT1">&#9822;</span></div>
+        <div class="field white" id="h_1"><span id="ROOK1">&#9820;</span></div>
+
+
+    </div>
 </div>
-<div id="misDatos"></div>
-
 </body>
+
 </html>
