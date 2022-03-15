@@ -17,7 +17,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("https://p4.wallpaperbetter.com/wallpaper/217/257/230/5bd2c91aee47c-wallpaper-preview.jpg");
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEqy7XXNWmlLUS4BO8GoLS12llA9m_36FkwA&usqp=CAU");
 }
 
 .login-container{
@@ -31,7 +31,7 @@ body{
 
 .marco{
     width: auto;
-    background: #f2711cff;
+    background: #797979;
     color: #fff;
 }
 
@@ -40,12 +40,13 @@ body{
 }
 
 .register{
+    background-image: linear-gradient(to bottom right, #000000, #ffffff);
     padding: 40px;
-    position: relative;
 }
 
+
 .register h2{
-    color: #797979;
+    color: #ffffff;
     margin-bottom: 30px;
 }
 
@@ -85,7 +86,7 @@ body{
 .register .submit{
     width: 100%;
     padding: 10px;
-    background: #f17108;
+    background: #000000;
     color: #fff;
     font-size: 12px;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, .2);
@@ -108,11 +109,11 @@ header>h1 {
 .register::after{
     content: '>';
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     top: 50%;
-    right: -19px;
-    padding: 12px;
+    right: -24px;
+    padding: 10px;
     text-align: center;
     font-size: 30px;
     background: #f1f1f1;
@@ -123,14 +124,14 @@ header>h1 {
 }
 
 .login{
-    background-image: linear-gradient(to bottom right, #1ab6b6, #4cac6e);
+    background-image: linear-gradient(to bottom right, #ffffff, #000000);
     padding: 40px;
 }
-
 .login h2{
-    color: #fff;
-    margin-bottom: 85px;
+    color: #000000;
+    margin-bottom: 87px;
 }
+
 
 .login button i{
     position: absolute;
@@ -148,8 +149,8 @@ header>h1 {
 }
 
 .login .iniciarSesion{
-    top:50px;
-    background: #f17108;
+    background: #000000;
+    top: 35px;
     border-style: none;
     color: #fff;
 
