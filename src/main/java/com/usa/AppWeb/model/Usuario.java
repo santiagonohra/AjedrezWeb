@@ -13,7 +13,19 @@ public class Usuario implements Serializable {
 	private Integer id;
 	private String username;
 	private String clave;
-	
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "partida_id")
+	private Partida partida;
+
+	public Partida getPartida() {
+		return partida;
+	}
+
+	public void setPartida(Partida partida) {
+		this.partida = partida;
+	}
+
 	public Integer getId() {
 		return id;
 	}

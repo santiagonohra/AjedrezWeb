@@ -12,14 +12,14 @@ public class Tablero {
     private Integer id;
 
     @OneToMany(mappedBy = "tablero")
-    private Set<Casilla> casilla;
+    private Set<Casilla> casillas;
 
-    public Set<Casilla> getCasilla() {
-        return casilla;
+    public Set<Casilla> getCasillas() {
+        return casillas;
     }
 
-    public void setCasilla(Set<Casilla> casilla) {
-        this.casilla = casilla;
+    public void setCasillas(Set<Casilla> casillas) {
+        this.casillas = casillas;
     }
 
     public Integer getId() {

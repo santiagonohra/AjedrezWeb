@@ -26,7 +26,15 @@ public class CasillaService {
     }
 
     public boolean mataFicha(Casilla casilla, Ficha ficha){
-        return(casilla.getFicha().getEquipo()!=ficha.getEquipo());
+        if(tieneFicha(casilla)){
+            if(casilla.getFicha().getEquipo()!=ficha.getEquipo()) {
+                ficha.getCasilla().setFicha(null);
+                ficha.setCasilla(casilla);
+                casilla.setFicha(ficha);
+                return true;
+            }
+        }
+        return false;
     }
 
 

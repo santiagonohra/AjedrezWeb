@@ -13,6 +13,12 @@ public class UsuarioService {
 	private UsuarioRepository usuarioRepository;
 	
 	public Usuario save(Usuario user) {
+		List<Usuario> comparacion = findAll();
+		for(Usuario usuario : comparacion){
+			if(user.getUsername().equals(usuario.getUsername())){
+				return null;
+			}
+		}
 		return usuarioRepository.save(user);
 	}
 	

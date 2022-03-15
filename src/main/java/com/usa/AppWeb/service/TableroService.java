@@ -13,6 +13,11 @@ public class TableroService {
     @Autowired
     private TableroRepository tableroRepository;
 
+    public Tablero armarTablero(){
+        Tablero miTablero = new Tablero();
+        return miTablero;
+    }
+
     public Tablero save(Tablero tablero) {
         return tableroRepository.save(tablero);
     }
