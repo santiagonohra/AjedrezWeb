@@ -5,12 +5,13 @@
     font-family: 'Roboto', sans-serif;
 }
 header {
-    padding-top:10%;
+    padding-top:2%;
     padding-bottom:1%;
 }
+
 header>h1 {
     text-align: center;
-    font: bold;
+    background: black;
     font-family: "Old English Text MT";
     color: #ffffff;
     text-transform: uppercase;
@@ -24,8 +25,8 @@ body{
 
 .container{
     width: 100%;
-    height: 50%;
-    padding: 1%;
+    height: 25%;
+    padding: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,7 +35,7 @@ body{
 
 .login-container{
     display: flex;
-    width: 650px;
+    width: 80%;
     height: auto;
     background: #fff;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .2);
@@ -93,31 +94,18 @@ body{
     cursor: pointer;
 }
 
-.register::after{
-    content: 'ó';
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    top: 50%;
-    right: -24px;
-    padding: 10px;
-    text-align: center;
-    font-size: 30px;
-    background: #f1f1f1;
-    border-radius: 52%;
-    transform: translateY(-50%);
-    box-shadow: -1px 1px 3px 1px rgba(0, 0, 0, .2);
-    color: #7c7c7c;
-}
 
 .login{
+    position: center;
     background-image: linear-gradient(to bottom right, #ffffff, #ffffff);
-    padding: 40px;
+    padding: 4%;
+    border-left-style: solid;
 }
 
 .register{
+    position: center;
     background-image: linear-gradient(to bottom right, #ffffff, #ffffff);
-    padding: 40px;
+    padding: 4%;
 }
 
 .login h2{
