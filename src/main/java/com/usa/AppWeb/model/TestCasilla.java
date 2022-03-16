@@ -10,6 +10,16 @@ public class TestCasilla {
     private int posY;
     private boolean occupied=false;
 
+    public TestCasilla(){
+
+    }
+
+    public TestCasilla(int posX, int posY, boolean occupied){
+        this.posX=posX;
+        this.posY=posY;
+        this.occupied=occupied;
+    }
+
     public int getPosX() {
         return posX;
     }

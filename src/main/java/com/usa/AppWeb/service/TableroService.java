@@ -42,19 +42,55 @@ public class TableroService {
     public void armarTablero(){
         Tablero miTablero =  new Tablero();
         List<TestCasilla> casillas = new ArrayList<>();
-        TestCasilla casilla = new TestCasilla();
-        casilla.setPosX(0);
-        casilla.setPosY(1);
-        casilla.setOccupied(true);
-        casillas.add(casilla);
-
         List<TestFicha> fichas = new ArrayList<>();
         TestFicha ficha = new TestFicha();
-        ficha.setEquipo(EquipoFicha.BLANCO);
-        ficha.setTipo(TipoFicha.PEON);
-        ficha.setPosX(0);
-        ficha.setPosY(1);
+        TestCasilla casilla = new TestCasilla();
+        //Poner peones blancos
+        for(int i=0;i<8;i++){
+            casilla = new TestCasilla(i+1, 2, true);
+            casillas.add(casilla);
+            ficha = new TestFicha(i+1, 2, TipoFicha.PEON, EquipoFicha.BLANCO);
+            fichas.add(ficha);
+        }
+        //Poner peones negros
+        for(int i=0;i<8;i++){
+            casilla = new TestCasilla(i+1, 7, true);
+            casillas.add(casilla);
+            ficha = new TestFicha(i+1, 7, TipoFicha.PEON, EquipoFicha.NEGRO);
+            fichas.add(ficha);
+        }
+        //Poner reyes
+        casilla = new TestCasilla(5, 1, true);
+        casillas.add(casilla);
+        ficha = new TestFicha(5, 1, TipoFicha.REY, EquipoFicha.BLANCO);
         fichas.add(ficha);
+
+        casilla = new TestCasilla(5, 8, true);
+        casillas.add(casilla);
+        ficha = new TestFicha(5, 8, TipoFicha.REY, EquipoFicha.NEGRO);
+        fichas.add(ficha);
+
+        //Poner Reinas
+        casilla = new TestCasilla(4, 1, true);
+        casillas.add(casilla);
+        ficha = new TestFicha(4, 1, TipoFicha.REINA, EquipoFicha.BLANCO);
+        fichas.add(ficha);
+
+        casilla = new TestCasilla(4, 8, true);
+        casillas.add(casilla);
+        ficha = new TestFicha(4, 8, TipoFicha.REINA, EquipoFicha.NEGRO);
+        fichas.add(ficha);
+
+        //Poner Torres
+        casilla = new TestCasilla(1, 1, true);
+        casillas.add(casilla);
+        ficha = new TestFicha(1, 1, TipoFicha.TORRE, EquipoFicha.BLANCO);
+        fichas.add(ficha);
+
+        //AQUI QUEDE AQUI QUEDE
+
+
+
 
         miTablero.setCasillas(casillas);
         miTablero.setFichas(fichas);

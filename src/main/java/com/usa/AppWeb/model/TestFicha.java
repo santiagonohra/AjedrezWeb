@@ -9,6 +9,17 @@ public class TestFicha {
     private int posX;
     private int posY;
 
+    public TestFicha(){
+
+    }
+
+    public TestFicha(int posX, int posY, TipoFicha tipo, EquipoFicha equipo){
+        this.posX=posX;
+        this.posY=posY;
+        this.tipo=tipo;
+        this.equipo=equipo;
+    }
+
     public TipoFicha getTipo() {
         return tipo;
     }
