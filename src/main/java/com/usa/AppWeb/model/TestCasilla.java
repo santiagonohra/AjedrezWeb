@@ -1,7 +1,5 @@
 package com.usa.AppWeb.model;
 
-import jdk.incubator.vector.VectorOperators;
-
 import javax.persistence.Embeddable;
 
 @Embeddable

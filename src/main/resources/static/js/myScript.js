@@ -1,55 +1,60 @@
 
-function sendData(){
-    //capturar Datos!
-    //document.getElementById("userName").value
+function isCorrectMove(posInicial, posFinal, ficha, color) {
 
-    let p={
-        username:$("#userName").val(),
-        clave:$("#pwd").val(),
-    }
-
-    if(p.username.trim() == "" || p.clave.trim() == ""){
-        alert("f");
-    }else{
-        let personToSend=JSON.stringify(p);
-        $.ajax({
-            dataType: 'json',
-            data:personToSend,
-            url:"http://localhost:8080/api/Usuario/save",
-            type:'POST',
-            contentType:'application/json',
-            success:function(response) {
-                getData();
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                alert("f");
-            }
-        });
-    }
-
-}
-
-function getData(){
-    $.ajax({
-        dataType: 'json',
-        url:"http://localhost:8080/api/Usuario/all",
-        type:'GET',
-        contentType:'application/json',
-        success:function(response) {
-            paintData(response);
+    return $.ajax({
+        url: 'http://localhost:8080/api/Tablero/chess/is-correct-move',
+        type: 'post',
+        contentType: 'application/json',
+        success: function (data) {
+            console.log('success...');
+            return data;
         },
-        error: function(jqXHR, textStatus, errorThrown) {
-
-        }
+        error: function () {
+            console.log("error...");
+            alert("Problema con el servidor!");
+            return false;
+        },
+        data: JSON.stringify(posInicial, posFinal ,ficha, color)
     });
 }
-function paintData(r){
-    $("#misDatos").empty();
-    var t="";
-    for(let i=0;i<r.length;i++){
-        t+="Nombre de usuario: "+r[i].username+"<br>";
-    }
 
-    $("#misDatos").append(t)
-}
+$(document).ready(function() {
+    var startPosition = null;
+    var destinationPosition = null;
+    //var color = null;
+
+    $(".field").mouseup(function(){
+        console.log('mousedown = ' + $(this).attr('id'));
+        console.log('mousedown = ' + $(this).find('#ALFIL2').length);
+
+        if($(this).find('#ALFIL2').length == 1 && startPosition == null) {
+            startPosition = $(this).attr('id');
+            $('#ALFIL2').css('color', '#267340');
+
+        } else if(startPosition != null) {
+            destinationPosition = $(this).attr('id');
+            var resultMove = isCorrectMove(startPosition, destinationPosition, 'ALFIL', '&#9821;');
+
+            resultMove.then(function(response) {
+                if(response) {
+                    $('#ALFIL2').css('color', '#000000');
+
+                    $('#ALFIL2').remove();
+                    $('#'+destinationPosition).html('<span id="ALFIL2">&#9821;</span>');
+
+
+                } else {
+                    $('#ALFIL2').css('color', '#000000');
+
+                    $('#ALFIL2').remove();
+                    $('#'+startPosition).html('<span id="ALFIL2">&#9821;</span>');
+                }
+
+                startPosition = null;
+                destinationPosition = null;
+            });
+        }
+    });
+
+})
 
