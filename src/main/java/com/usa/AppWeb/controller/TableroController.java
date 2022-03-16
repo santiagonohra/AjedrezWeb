@@ -22,14 +22,16 @@ public class TableroController {
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Tablero save(Tablero tablero){
-        return tableroService.save(tablero);
+    public Tablero save(){
+        return tableroService.armarTablero();
     }
 
     @GetMapping("/casilla")
     public TestCasilla getCasillaPorPos(int posX, int posY, int idTablero){
         return tableroService.getCasillaPorPos(posX, posY, idTablero);
     }
+
+
 
 
 }
