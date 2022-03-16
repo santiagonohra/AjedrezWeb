@@ -16,18 +16,18 @@ public class PartidaService {
     @Autowired
     private PartidaRepository partidaRepository;
 
-    public Partida save(Partida partida) {
+    /*public Partida save(Partida partida) {
         if(partida.getUser().size()<=2){
             return partidaRepository.save(partida);
         }
         return null;
-    }
+    }*/
 
     public List<Partida> findAll(){
         return (List<Partida>) partidaRepository.getAll();
     }
 
-    public Partida cargarPartida(Usuario user, int id){
+    /*public Partida cargarPartida(Usuario user, int id){
 
         Optional<Partida> partidaCargada = partidaRepository.getById(id);
         Set<Usuario> usuariosPartida = partidaCargada.get().getUser();
@@ -39,5 +39,5 @@ public class PartidaService {
             }
         }
         return null;
-    }
+    }*/
 }
