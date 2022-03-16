@@ -2,6 +2,8 @@ package com.usa.AppWeb.controller;
 
 import com.usa.AppWeb.model.Tablero;
 import com.usa.AppWeb.model.TestCasilla;
+import com.usa.AppWeb.model.TestFicha;
+import com.usa.AppWeb.service.FichaService;
 import com.usa.AppWeb.service.TableroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,7 +33,10 @@ public class TableroController {
         return tableroService.getCasillaPorPos(posX, posY, idTablero);
     }
 
-
-
+    @GetMapping("/esValido")
+    public boolean movimientoValido(TestCasilla finalPosition, TestFicha ficha){
+        FichaService fichaService = new FichaService();
+        return fichaService.esMovValido(finalPosition,ficha);
+    }
 
 }

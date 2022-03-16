@@ -24,4 +24,11 @@ public class UsuarioController {
     public Usuario save(@RequestBody Usuario user) {
         return usuarioService.save(user);
     }
+
+    @PostMapping("/delete")
+    @ResponseStatus(HttpStatus.CREATED)
+    public boolean delete(@RequestBody Usuario user) {
+        return usuarioService.delete(user);
+    }
+
 }

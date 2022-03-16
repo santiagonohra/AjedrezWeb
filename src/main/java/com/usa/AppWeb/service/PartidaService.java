@@ -17,10 +17,18 @@ public class PartidaService {
     private PartidaRepository partidaRepository;
 
     public Partida save(Partida partida) {
-        if(partida.getUser().size()<=2){
-            return partidaRepository.save(partida);
+        return partidaRepository.save(partida);
+    }
+
+    public boolean delete(Partida partida){
+        List<Partida> allMatches = findAll();
+        for(Partida p : allMatches){
+            if(p.equals(partida)){
+                partidaRepository.delete(p);
+                return true;
+            }
         }
-        return null;
+        return false;
     }
 
     public List<Partida> findAll(){
@@ -30,6 +38,8 @@ public class PartidaService {
     public Partida cargarPartida(Usuario user, int id){
 
         Optional<Partida> partidaCargada = partidaRepository.getById(id);
+        return partidaCargada.get();
+        /*
         Set<Usuario> usuariosPartida = partidaCargada.get().getUser();
         if(usuariosPartida.size()<=2){
             for(Usuario users : usuariosPartida){
@@ -39,5 +49,6 @@ public class PartidaService {
             }
         }
         return null;
+        */
     }
 }

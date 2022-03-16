@@ -9,6 +9,8 @@ import java.util.List;
 
 @Service
 public class FichaService {
+    @Autowired
+    private FichaRepository fichaRepository;
 
     public boolean esMovValido(TestCasilla posFinal, TestFicha ficha){
         boolean validez;

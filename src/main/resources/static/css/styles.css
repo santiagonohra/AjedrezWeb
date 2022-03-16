@@ -1,0 +1,42 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.header-bar{
+    display: inline-block;
+    padding:20px;
+    list-style: none;
+}
+
+.header-bar li{
+    display: inline-block;
+    margin: 0px 20px;
+}
+
+#header-title{
+    font-size: 20px;
+}
+
+a{
+    text-decoration: none;
+}
+a:hover{
+    color: white;
+}
+
+#header-color{
+    width: 100vw;
+    background-color: aqua;
+}
+
+#main-background{
+    background-color: red;
+    height: 95vh;
+}
+
+#footer-background{
+    height: 20vh;
+    background-color: yellow;
+}
