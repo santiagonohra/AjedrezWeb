@@ -54,6 +54,7 @@ public class TableroService {
         }
 
         if((ficha1!=null && ficha2!=null) && (ficha1.getEquipo()!=ficha2.getEquipo())){
+            System.out.println("holi");
             return setFichaPorPos(posIniX, posIniY, idTablero, posFinalX, posFinalY, true);
         }
         if((ficha1!=null && ficha2==null)){
@@ -72,13 +73,15 @@ public class TableroService {
             int fichaIndex = fichas.indexOf(ficha1);
 
             TestFicha fichaPorEliminar = getFichaPorPos(posFinalX, posFinalY, idTablero);
-            fichas.remove(fichaPorEliminar);
+
 
             ficha1.setPosY(posFinalY);
             ficha1.setPosX(posFinalX);
 
 
             fichas.set(fichaIndex, ficha1);
+
+            fichas.remove(fichaPorEliminar);
 
             miTableroObjeto.setFichas(fichas);
             tableroRepository.save(miTableroObjeto);
@@ -123,7 +126,7 @@ public class TableroService {
         //Poner Reinas B&W
         ficha = new TestFicha(4, 1, TipoFicha.REINA, EquipoFicha.BLANCO);
         fichas.add(ficha);
-        ficha = new TestFicha(4, 8, TipoFicha.REINA, EquipoFicha.NEGRO);
+        ficha = new TestFicha(1, 5, TipoFicha.REINA, EquipoFicha.NEGRO);
         fichas.add(ficha);
 
         //Poner Torres B&W

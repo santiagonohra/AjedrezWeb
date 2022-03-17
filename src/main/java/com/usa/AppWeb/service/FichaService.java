@@ -20,6 +20,7 @@ public class FichaService {
         boolean validez=false;
         TestFicha ficha = tableroService.getFichaPorPos(posIniX, posIniY, idTablero);
 
+
         if(posIniX==posFinalX && posIniY==posFinalY){
             return false;
         }
@@ -53,7 +54,6 @@ public class FichaService {
                 if(ficha.getEquipo() == EquipoFicha.BLANCO){
 
                     if(posIniY<posFinalY){
-                        System.out.println("holii");
                         return true;
                     }
                 }
@@ -65,6 +65,7 @@ public class FichaService {
             }
             //Primer mov
             if (Math.abs(posIniY-posFinalY) == 2 && Math.abs(posIniX-posFinalX) == 0 && (posIniY == 2 || posIniY == 7)) {
+                System.out.println("Primer movimiento ");
                 if(ficha.getEquipo() == EquipoFicha.BLANCO){
                     if(posIniY<posFinalY){
                         return(esCaminoValido(ficha, posFinalX, posFinalY, idTablero));
@@ -118,6 +119,7 @@ public class FichaService {
                         return false;
                     }
                 }
+                return true;
 
 
             }
@@ -156,6 +158,7 @@ public class FichaService {
                         return false;
                     }
                 }
+                return true;
             }
         }
 
@@ -174,6 +177,7 @@ public class FichaService {
                         return false;
                     }
                 }
+                return true;
             }
         }
 
