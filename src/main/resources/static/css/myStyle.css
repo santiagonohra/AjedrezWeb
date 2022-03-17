@@ -1,38 +1,44 @@
 *{
-    margin: 0;
-    padding: 0;
+    margin: 0%;
+    padding: 0%;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
+header {
+    padding-top:2%;
+    padding-bottom:1%;
+}
+
+header>h1 {
+    text-align: center;
+    background: black;
+    font-family: "Old English Text MT";
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 400%;
+
+}
 
 body{
-    background: #f1f1f1;
-
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEqy7XXNWmlLUS4BO8GoLS12llA9m_36FkwA&usqp=CAU");
 }
 
 .container{
     width: 100%;
-    height: 100vh;
-    padding: 10px;
+    height: 25%;
+    padding: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEqy7XXNWmlLUS4BO8GoLS12llA9m_36FkwA&usqp=CAU");
+
 }
 
 .login-container{
     display: flex;
-    width: 800px;
+    width: 80%;
     height: auto;
     background: #fff;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .2);
-}
-
-
-.marco{
-    width: auto;
-    background: #797979;
-    color: #fff;
 }
 
 .register, .login{
@@ -40,13 +46,12 @@ body{
 }
 
 .register{
-    background-image: linear-gradient(to bottom right, #000000, #ffffff);
-    padding: 40px;
+    padding: 5%;
+    position: relative;
 }
 
-
 .register h2{
-    color: #ffffff;
+    color: #000000;
     margin-bottom: 30px;
 }
 
@@ -67,20 +72,26 @@ body{
     padding: 5px;
     font-size: 16px;
     margin-bottom: 25px;
+    top: 50px;
     border-top-style: none;
     border-left-style: none;
     border-right-style: none;
     border-bottom: 1px solid #a8a8a8;
     color: #333;
 }
-
-
-.espacio{
-    padding-bottom:20px;
-}
 .register input:active,
 .register input:focus{
     outline: none;
+}
+
+.login .submit{
+    width: 100%;
+    padding: 10px;
+    background: #000000;
+    color: #fff;
+    font-size: 12px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, .2);
+    cursor: pointer;
 }
 
 .register .submit{
@@ -93,50 +104,23 @@ body{
     cursor: pointer;
 }
 
-header {
-    background: #333;
-    height: 1px;
-}
-
-header>h1 {
-    text-align: center;
-    font: bold 36px Arial, Helvetica, sans-serif;
-    line-height: 260px;
-    color: #ffffff;
-    text-transform: uppercase;
-}
-
-.register::after{
-    content: '>';
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    top: 50%;
-    right: -24px;
-    padding: 10px;
-    text-align: center;
-    font-size: 30px;
-    background: #f1f1f1;
-    border-radius: 50%;
-    transform: translateY(-50%);
-    box-shadow: -1px 1px 3px 1px rgba(0, 0, 0, .2);
-    color: #7c7c7c;
-}
 
 .login{
-    background-image: linear-gradient(to bottom right, #ffffff, #000000);
-    padding: 40px;
+    position: center;
+    background-image: linear-gradient(to bottom right, #ffffff, #ffffff);
+    padding: 4%;
+    border-left-style: solid;
 }
+
+.register{
+    position: center;
+    background-image: linear-gradient(to bottom right, #ffffff, #ffffff);
+    padding: 4%;
+}
+
 .login h2{
     color: #000000;
     margin-bottom: 87px;
-}
-
-
-.login button i{
-    position: absolute;
-    top: 12px;
-    left: 12px;
 }
 
 .login button{
@@ -167,7 +151,7 @@ header>h1 {
     }
 
     .register::after{
-        top: unset;
+        top: 78px;
         bottom: -25px;
         left: 50%;
         transform: translateX(-50%) rotate(90deg);

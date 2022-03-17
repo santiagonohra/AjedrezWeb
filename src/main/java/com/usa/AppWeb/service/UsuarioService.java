@@ -11,7 +11,7 @@ import java.util.List;
 public class UsuarioService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
+
 	public Usuario save(Usuario user) {
 		List<Usuario> comparacion = findAll();
 		for(Usuario usuario : comparacion){
@@ -21,7 +21,18 @@ public class UsuarioService {
 		}
 		return usuarioRepository.save(user);
 	}
-	
+
+	public boolean delete(Usuario user){
+		List<Usuario> allUsers = findAll();
+		for(Usuario u : allUsers){
+			if(u.equals(user)){
+				usuarioRepository.delete(u);
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public List<Usuario> findAll(){
 		return (List<Usuario>) usuarioRepository.getAll();
 	}

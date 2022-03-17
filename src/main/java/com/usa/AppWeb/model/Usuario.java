@@ -6,12 +6,13 @@ import java.io.Serializable;
 @Entity
 @Table(name = "usuario")
 public class Usuario implements Serializable {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false)
 	private Integer id;
 	private String username;
+	private String email;
 	private String clave;
 
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -45,5 +46,11 @@ public class Usuario implements Serializable {
 		this.clave = clave;
 	}
 
-	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 }

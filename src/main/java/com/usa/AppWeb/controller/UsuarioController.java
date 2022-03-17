@@ -11,10 +11,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/Usuario")
 public class UsuarioController {
-	@Autowired
-	private UsuarioService usuarioService;
-	
-	@GetMapping("/all")
+    @Autowired
+    private UsuarioService usuarioService;
+
+    @GetMapping("/all")
     public List<Usuario> getPeople(){
         return usuarioService.findAll();
     }
@@ -24,4 +24,11 @@ public class UsuarioController {
     public Usuario save(@RequestBody Usuario user) {
         return usuarioService.save(user);
     }
+
+    @PostMapping("/delete")
+    @ResponseStatus(HttpStatus.CREATED)
+    public boolean delete(@RequestBody Usuario user) {
+        return usuarioService.delete(user);
+    }
+
 }
