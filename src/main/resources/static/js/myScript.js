@@ -1,5 +1,4 @@
 function isCorrectMove(posInicial, posFinal, ficha, color) {
-
     var casillaI = {
         posInicial: posInicial,
         posFinal: posFinal,
@@ -28,7 +27,6 @@ $(document).ready(function() {
     var startPosition = null;
     var destinationPosition = null;
     //var color = null;
-
     $(".field").mouseup(function(){
         console.log('mousedown = ' + $(this).attr('id'));
         console.log('mousedown = ' + $(this).find('#ALFIL2').length);
