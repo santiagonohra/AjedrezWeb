@@ -65,14 +65,11 @@ function paintDataUser(r){
         alert("Campos vacios");
     }
     else {
-        alert("entro al else")
         var bandera = 0;
         //var t = "";
         for (let i = 0; i < r.length; i++) {
-            alert("entro al ciclo for")
             //t += "Nombre de usuario: " + r[i].username + "<br>";
             if (p.usernameLogin == r[i].username && p.claveLogin == r[i].clave) {
-                alert("lo encontre que crack soy")
                 bandera = 1;
                 break;
             }

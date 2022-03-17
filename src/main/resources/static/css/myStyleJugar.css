@@ -40,22 +40,22 @@ body{
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .2);
 }
 
-.register, .login{
+.crea_partida, .une_partida{
     flex: 1;
 }
 
-.register{
+.crea_partida{
     padding: 5%;
     position: relative;
 }
 
-.register h2{
+.crea_partida h2{
     color: #000000;
     margin-bottom: 30px;
 }
 
 
-.register input{
+.crea_partida input{
     width: 100%;
     padding: 5px;
     font-size: 16px;
@@ -67,24 +67,25 @@ body{
     color: #333;
 }
 
-.login input{
+.une_partida input{
     width: 100%;
     padding: 5px;
     font-size: 16px;
     margin-bottom: 25px;
-    top: 50px;
+    top:-9%;
+    position: relative;
     border-top-style: none;
     border-left-style: none;
     border-right-style: none;
     border-bottom: 1px solid #a8a8a8;
     color: #333;
 }
-.register input:active,
-.register input:focus{
+.crea_partida input:active,
+.crea_partida input:focus{
     outline: none;
 }
 
-.login .submit{
+.une_partida .submit{
     width: 100%;
     padding: 10px;
     background: #000000;
@@ -94,7 +95,7 @@ body{
     cursor: pointer;
 }
 
-.register .submit{
+.crea_partida .submit{
     width: 100%;
     padding: 10px;
     background: #000000;
@@ -106,25 +107,25 @@ body{
     position: relative;
 }
 
-.login{
+.une_partida{
     position: center;
     background-image: linear-gradient(to bottom right, #ffffff, #ffffff);
     padding: 4%;
     border-left-style: solid;
 }
 
-.register{
+.crea_partida{
     position: center;
     background-image: linear-gradient(to bottom right, #ffffff, #ffffff);
     padding: 4%;
 }
 
-.login h2{
+.une_partida h2{
     color: #000000;
     margin-bottom: 87px;
 }
 
-.login button{
+.une_partida button{
     width: 100%;
     margin: 15px 0px;
     padding: 10px;
@@ -133,9 +134,10 @@ body{
     position: relative;
 }
 
-.login .iniciarSesion{
+.une_partida .une_partida{
     background: #000000;
-    top: 35px;
+    position:relative;
+    top: 200%;
     border-style: none;
     color: #fff;
 
@@ -148,11 +150,11 @@ body{
         display: block;
     }
 
-    .register, .login{
+    .crea_partida, .une_partida{
         flex: none;
     }
 
-    .register::after{
+    .crea_partida::after{
         top: 78px;
         bottom: -25px;
         left: 50%;
