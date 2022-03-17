@@ -51,4 +51,8 @@ public class TestFicha {
     public void setPosY(int posY) {
         this.posY = posY;
     }
+
+    public boolean equalCoords(int posX, int posY) {
+        return (this.posX == posX && this.posY == posY);
+    }
 }

@@ -1,9 +1,17 @@
 package com.usa.AppWeb.model;
-import java.io.Serializable;
 
-public class Casilla implements Serializable {
-    private int posX;
-    private int posY;
+public class MovimientoParam {
+    TestFicha ficha;
+    int posX;
+    int posY;
+
+    public TestFicha getFicha() {
+        return ficha;
+    }
+
+    public void setFicha(TestFicha ficha) {
+        this.ficha = ficha;
+    }
 
     public int getPosX() {
         return posX;

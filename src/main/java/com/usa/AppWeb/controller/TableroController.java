@@ -1,7 +1,8 @@
 package com.usa.AppWeb.controller;
 
+import com.usa.AppWeb.model.Casilla;
+import com.usa.AppWeb.model.MovimientoParam;
 import com.usa.AppWeb.model.Tablero;
-import com.usa.AppWeb.model.TestCasilla;
 import com.usa.AppWeb.model.TestFicha;
 import com.usa.AppWeb.service.FichaService;
 import com.usa.AppWeb.service.TableroService;
@@ -28,15 +29,18 @@ public class TableroController {
         return tableroService.armarTablero();
     }
 
-    @GetMapping("/casilla")
-    public TestCasilla getCasillaPorPos(int posX, int posY, int idTablero){
-        return tableroService.getCasillaPorPos(posX, posY, idTablero);
-    }
+    @PostMapping("/esValido")
+    public boolean movimientoValido(@RequestBody MovimientoParam movimiento){
 
-    @GetMapping("/esValido")
-    public boolean movimientoValido(TestCasilla finalPosition, TestFicha ficha){
         FichaService fichaService = new FichaService();
-        return fichaService.esMovValido(finalPosition,ficha);
+       if(fichaService.esMovValido(movimiento.getPosX(), movimiento.getPosY(), movimiento.getFicha()))
+        {
+
+            return tableroService.moverFicha(movimiento.getFicha().getPosX(), movimiento.getFicha().getPosY(), 1, movimiento.getPosX(), movimiento.getPosY());
+
+        }
+        return false;
+
     }
 
 }

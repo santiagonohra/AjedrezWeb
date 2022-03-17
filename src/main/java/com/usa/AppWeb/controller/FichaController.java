@@ -1,6 +1,5 @@
 package com.usa.AppWeb.controller;
 
-import com.usa.AppWeb.model.TestCasilla;
 import com.usa.AppWeb.model.TestFicha;
 import com.usa.AppWeb.service.FichaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +15,10 @@ public class FichaController {
     @Autowired
     private FichaService fichaService;
 
-    @GetMapping("/movimientoValido")
+    /*@GetMapping("/movimientoValido")
     public boolean movimientoValido(TestCasilla finalPosition, TestFicha ficha){
         return fichaService.esMovValido(finalPosition,ficha);
-    }
+    }*/
 
 
 }

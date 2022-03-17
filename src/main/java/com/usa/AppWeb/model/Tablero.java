@@ -20,9 +20,6 @@ public class Tablero implements Serializable {
     @ElementCollection
     private List<TestFicha> fichas;
 
-    @ElementCollection
-    private List<TestCasilla> casillas;
-
     public Integer getId() {
         return id;
     }
@@ -37,13 +34,5 @@ public class Tablero implements Serializable {
 
     public void setFichas(List<TestFicha> fichas) {
         this.fichas = fichas;
-    }
-
-    public List<TestCasilla> getCasillas() {
-        return casillas;
-    }
-
-    public void setCasillas(List<TestCasilla> casillas) {
-        this.casillas = casillas;
     }
 }

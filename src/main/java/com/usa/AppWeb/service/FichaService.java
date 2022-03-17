@@ -5,68 +5,75 @@ import com.usa.AppWeb.repository.FichaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Table;
 import java.util.List;
 
 @Service
 public class FichaService {
     @Autowired
     private FichaRepository fichaRepository;
+    private TableroService tableroService;
 
-    public boolean esMovValido(TestCasilla posFinal, TestFicha ficha){
-        boolean validez;
-        TestCasilla posInicial = new TestCasilla();
-        posInicial.setPosX(ficha.getPosX());
-        posInicial.setPosY(ficha.getPosY());
+    public boolean esMovValido(int posFinalX, int posFinalY, TestFicha ficha){
+        boolean validez=false;
+        int posIniX=ficha.getPosX();
+        int posIniY=ficha.getPosY();
+
+        if(posIniX==posFinalX && posIniY==posFinalY){
+            return false;
+        }
         if(ficha.getTipo()== TipoFicha.REY){
-            if(posFinal.equals(posFinal)){
-                return false;
-            }
-            if(Math.abs(posFinal.getPosX()-posInicial.getPosX())<=1 && Math.abs(posFinal.getPosY()-posInicial.getPosY())<=1){
-                return true;
-            }
+            return(Math.abs(posFinalX-posIniX)<=1 && Math.abs(posFinalY-posIniY)<=1);
         }
         if(ficha.getTipo()==TipoFicha.REINA){
-            if(posInicial.equals(posFinal)){
-                return false;
-            }
-            if(Math.abs(posFinal.getPosX()-posInicial.getPosX())==Math.abs(posFinal.getPosY()-posInicial.getPosY())){
+            if(Math.abs(posFinalX-posIniX)==Math.abs(posFinalY-posIniY)){
                 return true;
             }
-            if(posFinal.getPosX()==posInicial.getPosX() || posFinal.getPosY()== posInicial.getPosY()){
+            if(posFinalX==posIniX || posFinalY==posIniY){
                 return true;
             }
         }
 
         if(ficha.getTipo()==TipoFicha.TORRE){
-            if(posInicial.equals(posFinal)){
-                return false;
-            }
-            return(posFinal.getPosX()==posInicial.getPosX() || posFinal.getPosY()== posInicial.getPosY());
+            return(posFinalX==posIniX || posFinalY==posIniY);
         }
         if(ficha.getTipo()==TipoFicha.CABALLO){
-            if(posInicial.equals(posFinal)){
-                return false;
-            }
-            int difX=Math.abs(posInicial.getPosX()-posFinal.getPosX());
-            int difY=Math.abs(posInicial.getPosY()-posFinal.getPosY());
+            int difX=Math.abs(posFinalX-posIniX);
+            int difY=Math.abs(posFinalY-posIniY);
             return((difX+difY==3 && difX!=0 && difY!=0));
         }
         if(ficha.getTipo()==TipoFicha.ALFIL){
-            if(posInicial.equals(posFinal)){
-                return false;
-            }
-            return(Math.abs(posFinal.getPosX()-posInicial.getPosX())==Math.abs(posFinal.getPosY()-posInicial.getPosY()));
+            return(Math.abs(posFinalX-posIniX)==Math.abs(posFinalY-posIniY));
         }
         if(ficha.getTipo()==TipoFicha.PEON){
-            if(posInicial.equals(posFinal)){
-                return false;
-            }
-            if(Math.abs(posInicial.getPosY()-posFinal.getPosY())==1 && Math.abs(posInicial.getPosX()-posFinal.getPosX())==0){
-                return true;
+            //                                                                                                          2 2    3 3
+            if((Math.abs(posIniY-posFinalY)==1 && Math.abs(posIniX-posFinalX)==0) || (Math.abs(posFinalX-posIniX)==Math.abs((posIniY-posFinalY)) && Math.abs(posFinalX-posIniX)==1)){
+
+                if(ficha.getEquipo() == EquipoFicha.BLANCO){
+
+                    if(posIniY<posFinalY){
+
+                        return true;
+                    }
+                }
+                if(ficha.getEquipo() == EquipoFicha.NEGRO){
+                    if(posIniY>posFinalY){
+                        return true;
+                    }
+                }
             }
             //Primer mov
-            if (Math.abs(posInicial.getPosY() - posFinal.getPosY()) == 2 && Math.abs(posInicial.getPosX() - posFinal.getPosX()) == 0 && (posInicial.getPosY() == 1 || posInicial.getPosY() == 6)) {
-                return true;
+            if (Math.abs(posIniY-posFinalY) == 2 && Math.abs(posIniX-posFinalX) == 0 && (posIniY == 1 || posIniY == 6)) {
+                if(ficha.getEquipo() == EquipoFicha.BLANCO){
+                    if(posIniY<posFinalY){
+                        return true;
+                    }
+                }
+                if(ficha.getEquipo() == EquipoFicha.NEGRO){
+                    if(posIniY>posFinalY){
+                        return true;
+                    }
+                }
             }
         }
         return false;
