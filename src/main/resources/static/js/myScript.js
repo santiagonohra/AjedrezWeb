@@ -63,9 +63,11 @@ function getData2(){
 
 function hacerMovimiento(r){
     let miData={
-        ficha: r[0].fichas[1],
-        posX: 3,
-        posY: 3
+        //ficha: r[0].fichas[1],
+        posIX:$("#movIX").val(),
+        posIY:$("#movIY").val(),
+        posX:$("#movX").val(),
+        posY:$("#movY").val(),
     };
     let miDataJSON = JSON.stringify(miData);
     $.ajax({
@@ -88,7 +90,8 @@ function paintTablero(){
 
     for(let i=1;i<9;i++){
         for (let j=1;j<9;j++){
-            tab+="<div style=\"display: inline;\" id='"+i+"-"+j+"' > @ </div>";
+            tab+="<div style=\"display: inline;font-size:50px;\" id='"+i+j+"' > <span> ^️ </span> </div>";
+
         }
         tab+="<br>";
     }
@@ -101,7 +104,7 @@ function paintData(r){
     var t="";
     paintTablero();
     var fichero= {
-        "PEON":'♟️',
+        "PEON":'♙',
         "ALFIL":'♝',
         "TORRE": '♜',
         "REINA":'♕',
@@ -110,7 +113,7 @@ function paintData(r){
      };
 
     for(let i=0;i<32;i++){
-        $("#"+r[0].fichas[i].posY+"-"+r[0].fichas[i].posX).html(fichero[r[0].fichas[i].tipo]);
+        $("#"+r[0].fichas[i].posY+r[0].fichas[i].posX).html(fichero[r[0].fichas[i].tipo]);
     }
 
 

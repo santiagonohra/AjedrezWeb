@@ -45,7 +45,7 @@ public class TableroService {
         List<TestFicha> fichas = miTableroObjeto.getFichas();
         TestFicha ficha1 = getFichaPorPos(posIniX, posIniY, idTablero);
         TestFicha ficha2 = getFichaPorPos(posFinalX, posFinalY, idTablero);
-        if((ficha1.getTipo()==TipoFicha.PEON && ficha2!=null) && (Math.abs(posFinalX-posIniX)==Math.abs((posIniY-posFinalY)) && Math.abs(posFinalX-posIniX)==1)){
+        if((ficha1.getTipo()==TipoFicha.PEON && ficha2!=null && ficha1.getEquipo()!=ficha2.getEquipo()) && (Math.abs(posFinalX-posIniX)==Math.abs((posIniY-posFinalY)) && Math.abs(posFinalX-posIniX)==1)){
             return setFichaPorPos(posIniX, posIniY, idTablero, posFinalX, posFinalY, true);
         }
 

@@ -1,5 +1,6 @@
 package com.usa.AppWeb.service;
 
+import ch.qos.logback.core.rolling.helper.IntegerTokenConverter;
 import com.usa.AppWeb.model.*;
 import com.usa.AppWeb.repository.FichaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,12 @@ import java.util.List;
 public class FichaService {
     @Autowired
     private FichaRepository fichaRepository;
+    @Autowired
     private TableroService tableroService;
 
-    public boolean esMovValido(int posFinalX, int posFinalY, TestFicha ficha){
+    public boolean esMovValido(int posFinalX, int posFinalY, int posIniX, int posIniY, int idTablero){
         boolean validez=false;
-        int posIniX=ficha.getPosX();
-        int posIniY=ficha.getPosY();
+        TestFicha ficha = tableroService.getFichaPorPos(posIniX, posIniY, idTablero);
 
         if(posIniX==posFinalX && posIniY==posFinalY){
             return false;
@@ -27,23 +28,23 @@ public class FichaService {
         }
         if(ficha.getTipo()==TipoFicha.REINA){
             if(Math.abs(posFinalX-posIniX)==Math.abs(posFinalY-posIniY)){
-                return true;
+                return(esCaminoValido(ficha, posFinalX, posFinalY, idTablero));
             }
             if(posFinalX==posIniX || posFinalY==posIniY){
-                return true;
+                return(esCaminoValido(ficha, posFinalX, posFinalY, idTablero));
             }
         }
 
         if(ficha.getTipo()==TipoFicha.TORRE){
-            return(posFinalX==posIniX || posFinalY==posIniY);
+            return((posFinalX==posIniX || posFinalY==posIniY) && (esCaminoValido(ficha, posFinalX, posFinalY, idTablero)));
         }
         if(ficha.getTipo()==TipoFicha.CABALLO){
             int difX=Math.abs(posFinalX-posIniX);
             int difY=Math.abs(posFinalY-posIniY);
-            return((difX+difY==3 && difX!=0 && difY!=0));
+            return((difX+difY==3 && difX!=0 && difY!=0) && (esCaminoValido(ficha, posFinalX, posFinalY, idTablero)));
         }
         if(ficha.getTipo()==TipoFicha.ALFIL){
-            return(Math.abs(posFinalX-posIniX)==Math.abs(posFinalY-posIniY));
+            return((Math.abs(posFinalX-posIniX)==Math.abs(posFinalY-posIniY)) && (esCaminoValido(ficha, posFinalX, posFinalY, idTablero)));
         }
         if(ficha.getTipo()==TipoFicha.PEON){
             //                                                                                                          2 2    3 3
@@ -52,7 +53,7 @@ public class FichaService {
                 if(ficha.getEquipo() == EquipoFicha.BLANCO){
 
                     if(posIniY<posFinalY){
-
+                        System.out.println("holii");
                         return true;
                     }
                 }
@@ -63,19 +64,119 @@ public class FichaService {
                 }
             }
             //Primer mov
-            if (Math.abs(posIniY-posFinalY) == 2 && Math.abs(posIniX-posFinalX) == 0 && (posIniY == 1 || posIniY == 6)) {
+            if (Math.abs(posIniY-posFinalY) == 2 && Math.abs(posIniX-posFinalX) == 0 && (posIniY == 2 || posIniY == 7)) {
                 if(ficha.getEquipo() == EquipoFicha.BLANCO){
                     if(posIniY<posFinalY){
-                        return true;
+                        return(esCaminoValido(ficha, posFinalX, posFinalY, idTablero));
                     }
                 }
                 if(ficha.getEquipo() == EquipoFicha.NEGRO){
                     if(posIniY>posFinalY){
-                        return true;
+                        return(esCaminoValido(ficha, posFinalX, posFinalY, idTablero));
                     }
                 }
             }
         }
+        return false;
+    }
+
+    public boolean esCaminoValido(TestFicha ficha, int posFinalX, int posFinalY, int idTablero){
+        Casilla[] camino;
+        if(ficha.getTipo()==TipoFicha.CABALLO){
+            return true;
+        }
+
+        if(ficha.getTipo()==TipoFicha.REINA){
+            //si es mov de alfil
+            if(Math.abs(posFinalX-ficha.getPosX())==Math.abs(posFinalY-ficha.getPosY())){
+                int largo = Math.abs(posFinalX-ficha.getPosX())-1;
+                camino = new Casilla[largo];
+                int direccionX = Integer.signum(posFinalX-ficha.getPosX());
+                int direccionY = Integer.signum(posFinalY-ficha.getPosY());
+                for(int i=0;i<largo;i++){
+                    camino[i]=new Casilla((ficha.getPosX()+((i+1)*direccionX)), (ficha.getPosY()+((i+1)*direccionY)));
+                }
+                for(Casilla casilla : camino){
+                    if(tableroService.getFichaPorPos(casilla.getPosX(), casilla.getPosY(), idTablero)!=null){
+                        return false;
+                    }
+                }
+                return true;
+            }
+            //Si es mov de torre
+            if(posFinalX==ficha.getPosX() || posFinalY==ficha.getPosY()){
+                int largo = Math.abs(posFinalX-ficha.getPosX())+Math.abs(posFinalY-ficha.getPosY())-1;
+                camino = new Casilla[largo];
+
+                int direccionX = Integer.signum(posFinalX-ficha.getPosX());
+                int direccionY = Integer.signum(posFinalY-ficha.getPosY());
+                for(int i=0;i<largo;i++){
+                    camino[i]=new Casilla((ficha.getPosX()+((i+1)*direccionX)), (ficha.getPosY()+((i+1)*direccionY)));
+                }
+                for(Casilla casilla : camino){
+                    if(tableroService.getFichaPorPos(casilla.getPosX(), casilla.getPosY(), idTablero)!=null){
+                        return false;
+                    }
+                }
+
+
+            }
+        }
+
+        if(ficha.getTipo()==TipoFicha.ALFIL){
+            if(Math.abs(posFinalX-ficha.getPosX())==Math.abs(posFinalY-ficha.getPosY())){
+                int largo = Math.abs(posFinalX-ficha.getPosX())-1;
+                camino = new Casilla[largo];
+                int direccionX = Integer.signum(posFinalX-ficha.getPosX());
+                int direccionY = Integer.signum(posFinalY-ficha.getPosY());
+                for(int i=0;i<largo;i++){
+                    camino[i]=new Casilla((ficha.getPosX()+((i+1)*direccionX)), (ficha.getPosY()+((i+1)*direccionY)));
+                }
+                for(Casilla casilla : camino){
+                    if(tableroService.getFichaPorPos(casilla.getPosX(), casilla.getPosY(), idTablero)!=null){
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+
+        if(ficha.getTipo()==TipoFicha.TORRE){
+            if(posFinalX==ficha.getPosX() || posFinalY==ficha.getPosY()){
+                int largo = Math.abs(posFinalX-ficha.getPosX())+Math.abs(posFinalY-ficha.getPosY())-1;
+                camino = new Casilla[largo];
+
+                int direccionX = Integer.signum(posFinalX-ficha.getPosX());
+                int direccionY = Integer.signum(posFinalY-ficha.getPosY());
+                for(int i=0;i<largo;i++){
+                    camino[i]=new Casilla((ficha.getPosX()+((i+1)*direccionX)), (ficha.getPosY()+((i+1)*direccionY)));
+                }
+                for(Casilla casilla : camino){
+                    if(tableroService.getFichaPorPos(casilla.getPosX(), casilla.getPosY(), idTablero)!=null){
+                        return false;
+                    }
+                }
+            }
+        }
+
+        if(ficha.getTipo()==TipoFicha.PEON){
+            if(posFinalX==ficha.getPosX() && posFinalY!=ficha.getPosY()){
+                int largo = Math.abs(posFinalX-ficha.getPosX())+Math.abs(posFinalY-ficha.getPosY())-1;
+                camino = new Casilla[largo];
+
+                int direccionX = Integer.signum(posFinalX-ficha.getPosX());
+                int direccionY = Integer.signum(posFinalY-ficha.getPosY());
+                for(int i=0;i<largo;i++){
+                    camino[i]=new Casilla((ficha.getPosX()+((i+1)*direccionX)), (ficha.getPosY()+((i+1)*direccionY)));
+                }
+                for(Casilla casilla : camino){
+                    if(tableroService.getFichaPorPos(casilla.getPosX(), casilla.getPosY(), idTablero)!=null){
+                        return false;
+                    }
+                }
+            }
+        }
+
         return false;
     }
 }

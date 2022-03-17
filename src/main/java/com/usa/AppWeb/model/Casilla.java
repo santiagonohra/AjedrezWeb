@@ -1,9 +1,18 @@
 package com.usa.AppWeb.model;
 import java.io.Serializable;
 
-public class Casilla implements Serializable {
+public class Casilla {
     private int posX;
     private int posY;
+
+    public Casilla(){
+
+    }
+
+    public Casilla(int posX, int posY){
+        this.posX=posX;
+        this.posY=posY;
+    }
 
     public int getPosX() {
         return posX;

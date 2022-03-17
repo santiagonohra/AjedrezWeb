@@ -1,16 +1,26 @@
 package com.usa.AppWeb.model;
 
 public class MovimientoParam {
-    TestFicha ficha;
+    //TestFicha ficha;
+    int posIX;
+    int posIY;
     int posX;
     int posY;
 
-    public TestFicha getFicha() {
-        return ficha;
+    public int getPosIX() {
+        return posIX;
     }
 
-    public void setFicha(TestFicha ficha) {
-        this.ficha = ficha;
+    public void setPosIX(int posIX) {
+        this.posIX = posIX;
+    }
+
+    public int getPosIY() {
+        return posIY;
+    }
+
+    public void setPosIY(int posIY) {
+        this.posIY = posIY;
     }
 
     public int getPosX() {
