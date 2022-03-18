@@ -35,4 +35,15 @@ public class UsuarioService {
 	public List<Usuario> findAll(){
 		return (List<Usuario>) usuarioRepository.getAll();
 	}
+
+	public boolean usuarioRegistrado(Usuario u){
+		List<Usuario> allUsers =  findAll();
+		for(Usuario us : allUsers){
+			if(us.getUsername().equals(u.getUsername()) && us.getClave().equals(u.getClave())){
+				return true;
+			}
+		}
+		return false;
+	}
+
 }

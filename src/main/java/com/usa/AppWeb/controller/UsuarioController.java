@@ -30,6 +30,13 @@ public class UsuarioController {
         return usuarioService.save(u);
     }
 
+    @PostMapping("/iniciarSesion")
+    @ResponseStatus(HttpStatus.CREATED)
+    public boolean iniciarSesion(@RequestBody Usuario u){
+        System.out.println("Datos de llegada ->"+u.getUsername()+" "+u.getClave());
+        return usuarioService.usuarioRegistrado(u);
+    }
+
     @PostMapping("/delete")
     @ResponseStatus(HttpStatus.CREATED)
     public boolean delete(@RequestBody Usuario user) {
