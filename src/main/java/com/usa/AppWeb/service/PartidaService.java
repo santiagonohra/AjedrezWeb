@@ -43,6 +43,7 @@ public class PartidaService {
     }
 
     public Partida crearPartida(String userName1){
+        userName1=userName1.replaceAll("\"","");
         Partida partida = new Partida();
         partida.setTablero(tableroService.armarTablero());
         partida.setUserName1(userName1);

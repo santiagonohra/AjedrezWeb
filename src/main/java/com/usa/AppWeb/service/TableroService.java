@@ -128,7 +128,7 @@ public class TableroService {
         //Poner Reinas B&W
         ficha = new TestFicha(4, 1, TipoFicha.REINA, EquipoFicha.BLANCO);
         fichas.add(ficha);
-        ficha = new TestFicha(1, 5, TipoFicha.REINA, EquipoFicha.NEGRO);
+        ficha = new TestFicha(4, 8, TipoFicha.REINA, EquipoFicha.NEGRO);
         fichas.add(ficha);
 
         //Poner Torres B&W
@@ -148,7 +148,7 @@ public class TableroService {
         ficha = new TestFicha(7, 1, TipoFicha.CABALLO, EquipoFicha.BLANCO);
         fichas.add(ficha);
 
-        ficha = new TestFicha(3, 3, TipoFicha.CABALLO, EquipoFicha.NEGRO); //era 2, 8
+        ficha = new TestFicha(2, 8, TipoFicha.CABALLO, EquipoFicha.NEGRO); //era 2, 8
         fichas.add(ficha);
         ficha = new TestFicha(7, 8, TipoFicha.CABALLO, EquipoFicha.NEGRO);
         fichas.add(ficha);
