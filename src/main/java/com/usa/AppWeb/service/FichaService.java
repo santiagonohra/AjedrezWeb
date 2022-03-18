@@ -18,6 +18,9 @@ public class FichaService {
         boolean validez=false;
         TestFicha ficha = tableroService.getFichaPorPos(posIniX, posIniY, idTablero);
 
+        if(ficha==null){
+            return false;
+        }
 
         if(posIniX==posFinalX && posIniY==posFinalY){
             return false;

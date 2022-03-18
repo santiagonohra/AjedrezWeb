@@ -1,4 +1,7 @@
 
+var idTablero;
+var idTableroJSON;
+
 function sendData(){
     //capturar Datos!
     //document.getElementById("userName").value
@@ -9,18 +12,19 @@ function sendData(){
         clave:$("#pwd").val(),
     }
 
-    if(p.username.trim() == "" || p.clave.trim() == ""){
+
+    if(username.trim() == "" || clave.trim() == ""){
         alert("f");
     }else{
-        //let personToSend=JSON.stringify(p);
+        let nombreUsuario=JSON.stringify(username);
         $.ajax({
             dataType: 'json',
-            //data:personToSend,
-            url:"http://localhost:8080/api/Tablero/save",
+            data: nombreUsuario,
+            url:"http://localhost:8080/api/Partida/crear",
             type:'POST',
             contentType:'application/json',
             success:function(response) {
-                getData();
+                paintData(response);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert("f");
@@ -29,12 +33,41 @@ function sendData(){
     }
 
 }
-
-function getData(){
+function unirse(){
+    let miData={
+        id: idTablero.toString(),
+        userName: "Dimelo123"
+    }
+    miDatosJSON = JSON.stringify(miData);
     $.ajax({
         dataType: 'json',
-        url:"http://localhost:8080/api/Tablero/all",
-        type:'GET',
+        data: miDatosJSON,
+        url:"http://localhost:8080/api/Partida/unirsePartida",
+        type:'POST',
+        contentType:'application/json',
+        success:function(response) {
+            alert("Se ha unido Dimelo123");
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+}
+
+function getData(r){
+    if(!r){
+        alert("Movimiento invalido!")
+    }
+    let miData={
+        id: idTablero.toString(),
+        userName: $("#userName").val()
+    };
+    miDatosJSON = JSON.stringify(miData);
+    $.ajax({
+        dataType: 'json',
+        data: miDatosJSON,
+        url:"http://localhost:8080/api/Partida/cargarPartida",
+        type:'POST',
         contentType:'application/json',
         success:function(response) {
             paintData(response);
@@ -45,40 +78,23 @@ function getData(){
     });
 }
 
-function getData2(){
-    $.ajax({
-        dataType: 'json',
-        url:"http://localhost:8080/api/Tablero/all",
-        type:'GET',
-        contentType:'application/json',
-        success:function(response) {
-            hacerMovimiento(response);
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-
-        }
-    });
-}
-
-
-
-function hacerMovimiento(r){
+function hacerMovimiento(){
     let miData={
-        //ficha: r[0].fichas[1],
         posIX:$("#movIX").val(),
         posIY:$("#movIY").val(),
         posX:$("#movX").val(),
         posY:$("#movY").val(),
+        idTablero: idTablero
     };
     let miDataJSON = JSON.stringify(miData);
     $.ajax({
         dataType: 'json',
         data:miDataJSON,
-        url:"http://localhost:8080/api/Tablero/esValido",
+        url:"http://localhost:8080/api/Partida/esValido",
         type:'POST',
         contentType:'application/json',
         success:function(response) {
-            getData();
+            getData(response);
         },
         error: function(jqXHR, textStatus, errorThrown) {
 
@@ -107,6 +123,7 @@ console.log('Se mando esto: ' + tab);
 
 
 function paintData(r){
+    idTablero = r.id;
     $("#misDatos").empty();
     var t="";
     paintTablero();

@@ -18,7 +18,7 @@ public class TableroController {
     @Autowired
     private TableroService tableroService;
     @Autowired
-    FichaService fichaService;
+    private FichaService fichaService;
 
     @GetMapping("/all")
     public List<Tablero> getTableros(){
@@ -31,16 +31,5 @@ public class TableroController {
         return tableroService.armarTablero();
     }
 
-    @PostMapping("/esValido")
-    public boolean movimientoValido(@RequestBody MovimientoParam movimiento){
-       if(fichaService.esMovValido(movimiento.getPosX(), movimiento.getPosY(), movimiento.getPosIX(), movimiento.getPosIY(), 1))
-        {
-
-            return tableroService.moverFicha(movimiento.getPosIX(), movimiento.getPosIY(), 1, movimiento.getPosX(), movimiento.getPosY());
-
-        }
-        return false;
-
-    }
 
 }

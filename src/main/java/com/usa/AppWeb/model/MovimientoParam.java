@@ -6,6 +6,15 @@ public class MovimientoParam {
     int posIY;
     int posX;
     int posY;
+    int idTablero;
+
+    public int getIdTablero() {
+        return idTablero;
+    }
+
+    public void setIdTablero(int idTablero) {
+        this.idTablero = idTablero;
+    }
 
     public int getPosIX() {
         return posIX;

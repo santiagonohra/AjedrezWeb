@@ -11,8 +11,13 @@ public class Partida {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    private String userName1, tipoJugador1;
-    private String userName2, tipoJugador2;
+    private String userName1;
+    private String userName2;
+
+    private EquipoFicha turno;
+
+    private EquipoFicha equipoJugador1;
+    private EquipoFicha equipoJugador2;
 
     @OneToOne
     private Tablero tablero;
@@ -41,14 +46,6 @@ public class Partida {
         this.userName1 = userName1;
     }
 
-    public String getTipoJugador1() {
-        return tipoJugador1;
-    }
-
-    public void setTipoJugador1(String tipoJugador1) {
-        this.tipoJugador1 = tipoJugador1;
-    }
-
     public String getUserName2() {
         return userName2;
     }
@@ -57,11 +54,27 @@ public class Partida {
         this.userName2 = userName2;
     }
 
-    public String getTipoJugador2() {
-        return tipoJugador2;
+    public EquipoFicha getEquipoJugador1() {
+        return equipoJugador1;
     }
 
-    public void setTipoJugador2(String tipoJugador2) {
-        this.tipoJugador2 = tipoJugador2;
+    public void setEquipoJugador1(EquipoFicha equipoJugador1) {
+        this.equipoJugador1 = equipoJugador1;
+    }
+
+    public EquipoFicha getEquipoJugador2() {
+        return equipoJugador2;
+    }
+
+    public void setEquipoJugador2(EquipoFicha equipoJugador2) {
+        this.equipoJugador2 = equipoJugador2;
+    }
+
+    public EquipoFicha getTurno() {
+        return turno;
+    }
+
+    public void setTurno(EquipoFicha turno) {
+        this.turno = turno;
     }
 }
