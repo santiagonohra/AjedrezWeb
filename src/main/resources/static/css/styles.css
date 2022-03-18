@@ -1,6 +1,6 @@
 
 .parallax{
-    background-image: url('http://i.stack.imgur.com/jGlzr.png');
+    background-image: url('https://www.junckershardwood.com/admin/public/getimage.ashx?Crop=0&Image=/Files/Images/WOODEN-FLOORING/2-STRIP-WOODEN-FLOORING/GRADINGS/BEECH-TENDER-OLIVE/Junckers-2strip-Beech-TenderOlive-Harmony.jpg&Format=jpg&Width=1000&Height=&Quality=90');
     width: 1500px;
     height: 650px;
 }
@@ -15,7 +15,7 @@
     float: left;
     width: 60px;
     height: 60px;
-    background-color: #2471a3;
+    background-color: dimgrey;
     font-size: 45px;
     text-align:center;
     display: table-cell;
@@ -27,7 +27,7 @@
     float: left;
     width: 60px;
     height: 60px;
-    background-color: #85c1e9;
+    background-color: white;
     font-size: 45px;
     text-align:center;
     display: table-cell;

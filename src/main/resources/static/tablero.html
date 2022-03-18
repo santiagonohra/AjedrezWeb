@@ -12,9 +12,22 @@
 
 <div class="parallax">
 
-    <div class="chessboard effect">
+    <div class="chessboard effect", style="text-align: center">
 
         <div id="tablero1"></div>
+        <input style="text-align: center" id="idPartidaTablero" type="text" placeholder="ID de Partida" class="nombre">
+        <button style="text-align: center" onclick="unirse();">Unirse a Partida!</button>
+        <br>
+        <br>
+        <button style="text-align: center" onclick="crearPartida();">Crear Partida!</button>
+
+        <br>
+        <br>
+        <div id="idPartida" style="text-align: center" ></div>
+        <br>
+        <div id="oponentes" style="text-align: center"  ></div>
+        <br>
+        <div id="turnoActual" style="text-align: center" ></div>
         <!--<button onclick="getPartida()">Aqui perra</button>-->
        <!-- <div class="field bdiv id="tablero1"></div>lack" id="2_8"><span id="KNIGHT4">&#9816;</span></div>
         <div class="field white" id="3_8"><span id="ALFIL4">&#9815;</span></div>

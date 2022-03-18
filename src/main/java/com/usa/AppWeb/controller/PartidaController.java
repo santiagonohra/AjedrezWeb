@@ -32,12 +32,13 @@ public class PartidaController {
     @PostMapping("/cargarPartida")
     public Partida cargarPartida(@RequestBody PartidaParam datos){
         System.out.println(datos.getId());
+        System.out.println("username1 retornado: " +partidaService.cargarPartida(datos.getId()).getUserName1());
         return partidaService.cargarPartida(datos.getId());
     }
 
     @PostMapping("/crear")
     @ResponseStatus(HttpStatus.CREATED)
-    public Partida crearPartida(String userName){
+    public Partida crearPartida(@RequestBody String userName){
         return partidaService.crearPartida(userName);
     }
 
