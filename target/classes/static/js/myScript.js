@@ -51,7 +51,10 @@ function unirse(){
     });
 }
 
-function getData(){
+function getData(r){
+    if(!r){
+        alert("Movimiento invalido!")
+    }
     let miData={
         id: idTablero.toString(),
         userName: $("#userName").val()
@@ -88,7 +91,7 @@ function hacerMovimiento(){
         type:'POST',
         contentType:'application/json',
         success:function(response) {
-            getData();
+            getData(response);
         },
         error: function(jqXHR, textStatus, errorThrown) {
 
