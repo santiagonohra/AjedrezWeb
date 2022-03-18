@@ -7,7 +7,7 @@
 
     <link href="css/myStyleJugar.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="js/otherScript.js"></script>
+    <script src="./js/jugarScript.js"></script>
     <title>UI Login</title>
 </head>
 <body>
@@ -17,7 +17,8 @@
     <div class="login-container">
         <div class="crea_partida">
             <h2 style="text-align: center">Crear una partida</h2>
-                <a href="tablero.html" ><input type="submit" class="submit" onclick="crearPartida()" value="CREAR"></a>
+                <!--<input type="submit" class="submit" onclick="crearPartida()" value="CREAR">-->
+                <button class="submit" onclick="crearPartida()" >Crear partida</button>
         </div>
         <div class="une_partida">
 
@@ -26,7 +27,7 @@
 
             <div class="login-items">
 
-                <a href="tablero.html" ><button class="une_partida"><i class="unirsePartida" onclick="unirse(this.id)"></i> UNIRSE</button></a>
+                <a href="tablero.html" ><button class="une_partida"><i class="unirsePartida" ></i> UNIRSE</button></a>
             </div>
         </div>
     </div>

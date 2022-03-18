@@ -1,3 +1,4 @@
+
 function sendDataUser(){
     //capturar Datos!
     //document.getElementById("userName").value
@@ -51,6 +52,7 @@ function iniciarSesion(){
         clave:$("#pwdInicio").val(),
         email: "-"
     };
+    let userName =$("#userNameInicio").val();
 
     if(p.username.trim() == "" || p.clave.trim() == "") {
         alert("Campos vacios");
@@ -66,8 +68,9 @@ function iniciarSesion(){
             contentType: 'application/json',
             success: function (response) {
                 if(response == true){
-                    alert("Registro exitoso");
-                    location.replace("jugar.html/");
+                    alert("Inicio de sesión exitoso");
+                    sessionStorage.setItem("userName", userName);
+                    location.replace("../Jugar.html");
                 }else{
                     alert("No se encuentra registrado ningun usuario con esos datos");
                 }
@@ -86,6 +89,7 @@ function getDataUser(){
         url:"http://localhost:8080/api/Usuario/all",
         type:'GET',
         contentType:'application/json',
+        async: false,
         success:function(response) {
             console.log(response);
         },

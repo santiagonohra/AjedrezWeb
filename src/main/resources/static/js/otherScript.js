@@ -143,7 +143,7 @@ function crearPartida() {
                 alert("f");
             }
         });
-    }
+}
 
     function ids(r){
         id = r.id;
