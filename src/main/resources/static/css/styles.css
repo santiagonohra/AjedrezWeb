@@ -1,42 +1,68 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+
+.parallax{
+    background-image: url('http://i.stack.imgur.com/jGlzr.png');
+    width: 1500px;
+    height: 650px;
+}
+.chessboard {
+    width: 480px;
+    height: 480px;
+    margin: 40px auto;
+    border: 1px solid #000000;
 }
 
-.header-bar{
-    display: inline-block;
-    padding:20px;
-    list-style: none;
+.black {
+    float: left;
+    width: 60px;
+    height: 60px;
+    background-color: #2471a3;
+    font-size: 45px;
+    text-align:center;
+    display: table-cell;
+    vertical-align:middle;
+    cursor: pointer;
 }
 
-.header-bar li{
-    display: inline-block;
-    margin: 0px 20px;
+.white {
+    float: left;
+    width: 60px;
+    height: 60px;
+    background-color: #85c1e9;
+    font-size: 45px;
+    text-align:center;
+    display: table-cell;
+    vertical-align:middle;
+    cursor: pointer;
 }
 
-#header-title{
-    font-size: 20px;
+.effect {
+    position:relative;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
-a{
-    text-decoration: none;
-}
-a:hover{
-    color: white;
-}
-
-#header-color{
-    width: 100vw;
-    background-color: aqua;
-}
-
-#main-background{
-    background-color: red;
-    height: 95vh;
+.effect:before, .effect:after {
+    content:"";
+    position:absolute;
+    z-index:-1;
+    -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:10px;
+    bottom:10px;
+    left:0;
+    right:0;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
 }
 
-#footer-background{
-    height: 20vh;
-    background-color: yellow;
+.effect:after {
+    right:10px;
+    left:auto;
+    -webkit-transform:skew(8deg) rotate(3deg);
+    -moz-transform:skew(8deg) rotate(3deg);
+    -ms-transform:skew(8deg) rotate(3deg);
+    -o-transform:skew(8deg) rotate(3deg);
+    transform:skew(8deg) rotate(3deg);
 }

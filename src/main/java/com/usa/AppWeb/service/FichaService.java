@@ -1,13 +1,11 @@
 package com.usa.AppWeb.service;
 
-import ch.qos.logback.core.rolling.helper.IntegerTokenConverter;
 import com.usa.AppWeb.model.*;
 import com.usa.AppWeb.repository.FichaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Table;
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FichaService {
