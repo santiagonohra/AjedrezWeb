@@ -11,7 +11,7 @@ import java.util.List;
 public class UsuarioService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
+
 	public Usuario save(Usuario user) {
 		List<Usuario> comparacion = findAll();
 		for(Usuario usuario : comparacion){
@@ -32,7 +32,6 @@ public class UsuarioService {
 		}
 		return false;
 	}
-	
 	public List<Usuario> findAll(){
 		return (List<Usuario>) usuarioRepository.getAll();
 	}

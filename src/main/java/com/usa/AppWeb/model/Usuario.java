@@ -6,7 +6,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "usuario")
 public class Usuario implements Serializable {
-	
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
@@ -14,18 +14,6 @@ public class Usuario implements Serializable {
 	private String username;
 	private String email;
 	private String clave;
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "partida_id")
-	private Partida partida;
-
-	public Partida getPartida() {
-		return partida;
-	}
-
-	public void setPartida(Partida partida) {
-		this.partida = partida;
-	}
 
 	public Integer getId() {
 		return id;

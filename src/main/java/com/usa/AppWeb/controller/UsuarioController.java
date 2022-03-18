@@ -11,10 +11,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/Usuario")
 public class UsuarioController {
-	@Autowired
-	private UsuarioService usuarioService;
-	
-	@GetMapping("/all")
+    @Autowired
+    private UsuarioService usuarioService;
+
+    @GetMapping("/all")
     public List<Usuario> getPeople(){
         return usuarioService.findAll();
     }
@@ -22,7 +22,11 @@ public class UsuarioController {
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario save(@RequestBody Usuario user) {
-        return usuarioService.save(user);
+        Usuario u = new Usuario();
+        u.setUsername(user.getUsername());
+        u.setClave(user.getClave());
+        u.setEmail(user.getEmail());
+        return usuarioService.save(u);
     }
 
     @PostMapping("/delete")
@@ -30,5 +34,5 @@ public class UsuarioController {
     public boolean delete(@RequestBody Usuario user) {
         return usuarioService.delete(user);
     }
-
 }
+

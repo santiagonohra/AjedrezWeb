@@ -1,0 +1,163 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+header {
+    padding-top:2%;
+    padding-bottom:1%;
+}
+
+header>h1 {
+    text-align: center;
+    background: black;
+    font-family: "Old English Text MT";
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 400%;
+
+}
+
+body{
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEqy7XXNWmlLUS4BO8GoLS12llA9m_36FkwA&usqp=CAU");
+}
+
+.container{
+    width: 100%;
+    height: 25%;
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container{
+    display: flex;
+    width: 80%;
+    height: auto;
+    background: #fff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .2);
+}
+
+.crea_partida, .une_partida{
+    flex: 1;
+}
+
+.crea_partida{
+    padding: 5%;
+    position: relative;
+}
+
+.crea_partida h2{
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+
+.crea_partida input{
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    margin-bottom: 25px;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom: 1px solid #a8a8a8;
+    color: #333;
+}
+
+.une_partida input{
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    margin-bottom: 25px;
+    top:-9%;
+    position: relative;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom: 1px solid #a8a8a8;
+    color: #333;
+}
+.crea_partida input:active,
+.crea_partida input:focus{
+    outline: none;
+}
+
+.une_partida .submit{
+    width: 100%;
+    padding: 10px;
+    background: #000000;
+    color: #fff;
+    font-size: 12px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, .2);
+    cursor: pointer;
+}
+
+.crea_partida .submit{
+    width: 100%;
+    padding: 10px;
+    background: #000000;
+    color: #fff;
+    font-size: 12px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, .2);
+    cursor: pointer;
+    top: 55%;
+    position: relative;
+}
+
+.une_partida{
+    position: center;
+    background-image: linear-gradient(to bottom right, #ffffff, #ffffff);
+    padding: 4%;
+    border-left-style: solid;
+}
+
+.crea_partida{
+    position: center;
+    background-image: linear-gradient(to bottom right, #ffffff, #ffffff);
+    padding: 4%;
+}
+
+.une_partida h2{
+    color: #000000;
+    margin-bottom: 87px;
+}
+
+.une_partida button{
+    width: 100%;
+    margin: 15px 0px;
+    padding: 10px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, .2);
+    cursor: pointer;
+    position: relative;
+}
+
+.une_partida .une_partida{
+    background: #000000;
+    position:relative;
+    top: 200%;
+    border-style: none;
+    color: #fff;
+
+}
+
+
+
+@media only screen and (max-width: 540px){
+    .login-container{
+        display: block;
+    }
+
+    .crea_partida, .une_partida{
+        flex: none;
+    }
+
+    .crea_partida::after{
+        top: 78px;
+        bottom: -25px;
+        left: 50%;
+        transform: translateX(-50%) rotate(90deg);
+    }
+}

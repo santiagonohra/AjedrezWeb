@@ -2,45 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Chess.IO</title>
-    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="css/myStyle.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/myScript.js"></script>
+    <title>UI Login</title>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="./js/myScript.js"></script>
 <body>
-    <h1>Ingresar a Chess.IO</h1>
-
-<div>
-    <label><b>Nombre de Usuario</b></label>
-    <input id="userName" placeholder="Nombre de Usuario">
-    <br>
-    <br>
-    <label><b>Contraseña</b></label>
-    <input id="pwd" type="password" placeholder="Contraseña">
-    <br>
-    <br>
-    <label><b>Movimiento Final en X</b></label>
-    <input id="movX" placeholder="Movimiento X">
-    <br>
-    <br>
-    <label><b>Movimiento Final en Y</b></label>
-    <input id="movY" placeholder="Movimiento Y">
-    <br>
-    <br>
-    <label><b>Movimiento Inicial en X</b></label>
-    <input id="movIX" placeholder="Movimiento X">
-    <br>
-    <br>
-    <label><b>Movimiento Inicial en Y</b></label>
-    <input id="movIY" placeholder="Movimiento Y">
-    <button onclick="sendData()">Ingresar</button>
-    <button onclick="hacerMovimiento()">Hacer Movimiento</button>
-    <button onclick="unirse()">Hacer que Player 2 se una</button>
-
+<!--<img src="assets/thumb2-chess-pieces-chess-concepts-wood-chess-kings-and-pawns-chess.jpg">-->
+<header><h1>Chess.io</h1></header>
+<div class="container">
+    <div class="login-container">
+        <div class="register">
+            <h2>Registrarse</h2>
+            <form action="">
+                <input id="userName" type="text" placeholder="Nombre de usuario" class="nombre">
+                <input id="correo" type="text" placeholder="Correo" class="Correo">
+                <input id="pwd" type="password" placeholder="Contraseña" class="pass">
+                <input id="pwdr" type="password" placeholder="Confirma contraseña" class="repass">
+                <input type="submit" class="submit" onclick="sendDataUser()" value="REGISTRARSE">
+            </form>
+        </div>
+        <div class="login">
+            <h2>Iniciar Sesión</h2>
+            <form action="">
+            <input id="userNameInicio"  type="text" placeholder="Usuario/Correo" class="nombre">
+            <input id="pwdInicio" type="password" placeholder="Contraseña" class="pass">
+            <input type="submit" class="submit" onclick="getDataUser()" value="INICIAR SESIÓN">
+            </form>
+        </div>
+    </div>
 </div>
-    <div id="tablero"></div>
-<div id="misDatos"></div>
-    <div style="display: inline;" style="height:150px; width:150px;" id='"+i+j+"' > <span> ▪️ </span> </div>
-
 </body>
 </html>
