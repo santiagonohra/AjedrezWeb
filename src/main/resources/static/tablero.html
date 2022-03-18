@@ -7,18 +7,19 @@
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="./js/otherScript.js"></script>
+<script src="./js/myScript.js"></script>
 
 <body>
 
-<button onclick="shotDown()">Ingresar</button>
 <div class="parallax">
 
     <div class="chessboard effect">
 
         <div id="tablero1"></div>
-         <!--
-        <div class="field white" id="1_8"><span id="ROOK4">&#9814;</span></div>
-        <div class="field black" id="2_8"><span id="KNIGHT4">&#9816;</span></div>
+        <button onclick="shotDown()">Ingresar</button>
+        <button onclick="crearPartida()">algo</button>
+        <button onclick="clicknm(this.id)">mover</button>
+       <!-- <div class="field black" id="2_8"><span id="KNIGHT4">&#9816;</span></div>
         <div class="field white" id="3_8"><span id="ALFIL4">&#9815;</span></div>
         <div class="field black" id="4_8"><span id="KING2">&#9813;</span></div>
         <div class="field white" id="5_8"><span id="QUEEN2">&#9812;</span></div>
@@ -38,8 +39,8 @@
         <div class="field white" id="8_7"><span id="PAWN16">&#9823;</span></div>
         -- 3th -->
 
-<!-- 2nd
-        <div class="field white" id="1_6"></div>
+<!--
+        <div class="field white" onclick="click()" id="1_6"></div>
         <div class="field black" id="2_6"></div>
         <div class="field white" id="3_6"></div>
         <div class="field black" id="4_6"></div>

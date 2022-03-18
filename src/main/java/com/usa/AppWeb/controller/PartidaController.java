@@ -53,4 +53,10 @@ public class PartidaController {
         return partidaService.moverFicha(movimiento.getPosIX(), movimiento.getPosIY(), movimiento.getIdTablero(), movimiento.getPosX(), movimiento.getPosY());
     }
 
+    @GetMapping("/buscarId")
+    public Partida buscarId(@RequestBody PartidaParam partida){
+        Partida p = partidaService.findById(partida.getId()).get();
+        return p;
+    }
+
 }

@@ -1,3 +1,6 @@
+var userName;
+var id;
+
 function sendDataUser(){
     //capturar Datos!
     //document.getElementById("userName").value
@@ -17,24 +20,24 @@ function sendDataUser(){
         alert("Campos vacios");
     }
     else if(p.clave==p.claveConfirmacion) {
-        console.log("Entro a clave igual");
-        let personToSend = JSON.stringify(p);
-        $.ajax({
-            dataType: 'json',
-            data: personToSend,
-            url: "http://localhost:8080/api/Usuario/save",
-            type: 'POST',
-            contentType: 'application/json',
-            success: function (response) {
-                alert("Registro exitoso");
-                console.log(response);
-                //getDataUser();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log(errorThrown);
-            }
-
-        });
+        if (/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.exec(p.email)) {
+            let personToSend = JSON.stringify(p);
+            $.ajax({
+                dataType: 'json',
+                data: personToSend,
+                url: "http://localhost:8080/api/Usuario/save",
+                type: 'POST',
+                contentType: 'application/json',
+                success: function (response) {
+                    alert("Registro exitoso");
+                    console.log(response)
+                    //getDataUser();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown)
+                }
+            });
+        }
     }
     else{
         alert("Las contraseñas no coinciden");
@@ -60,6 +63,7 @@ function getDataUser(){
 }
 function paintDataUser(r){
     $("#misDatos").empty();
+    userName = $("#userNameInicio").val();
     let p={
         usernameLogin:$("#userNameInicio").val(),
         emailLogin:$("#emailLogin").val(),
@@ -89,4 +93,26 @@ function paintDataUser(r){
         }
         //$("#misDatos").append(t)
     }
+}
+
+function crearPartida() {
+    let nombreUsuario = JSON.stringify(userName);
+    $.ajax({
+        dataType: 'json',
+        data: nombreUsuario,
+        url: "http://localhost:8080/api/Partida/crear",
+        type: 'POST',
+        contentType: 'application/json',
+        success: function (response) {
+            ids(response);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert("f");
+        }
+    });
+}
+
+function ids(r){
+    id = r.id;
+    getPartida();
 }
