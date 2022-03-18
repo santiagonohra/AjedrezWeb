@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -70,13 +71,27 @@ public class PartidaService {
     }
 
     public boolean moverFicha(int posIniX, int posIniY, int idTablero, int posFinalX, int posFinalY){
-        if(fichaService.esMovValido(posFinalX, posFinalY, posIniX, posIniY, idTablero)){
-            Optional<Partida> partida = findById(idTablero);
-            Partida miPartidaObjeto = partida.get();
-            if(miPartidaObjeto.getUserName2()==null){
-                return false;
+        Optional<Partida> partida = findById(idTablero);
+        Partida miPartidaObjeto = partida.get();
+        System.out.println("Dentro del partida  service moverficha");
+        if(miPartidaObjeto.getUserName2()==null){
+            System.out.println("Dentro de user2 nulo");
+            return false;
+        }
+/*
+        if(estaEnJaque(miPartidaObjeto.getTurno(), idTablero)){
+            TestFicha ficha = tableroService.getFichaPorPos(posIniX, posIniY, idTablero);
+            if(fichaService.esMovValido(posFinalX, posFinalY, posIniX, posIniY, idTablero) && ficha.getTipo()==TipoFicha.REY){
+                miPartidaObjeto.setTurno(EquipoFicha.NEGRO);
+                partidaRepository.save(miPartidaObjeto);
+                return true;
             }
+            return false;
+        }*/
+        if(fichaService.esMovValido(posFinalX, posFinalY, posIniX, posIniY, idTablero)){
+            System.out.println("Dentro del ficha service if");
             if(tableroService.moverFicha(posIniX, posIniY, idTablero, posFinalX, posFinalY, miPartidaObjeto.getTurno())){
+                System.out.println("Dentro del tablero service if");
                 if(miPartidaObjeto!=null && miPartidaObjeto.getTurno()==EquipoFicha.BLANCO){
                     miPartidaObjeto.setTurno(EquipoFicha.NEGRO);
                     partidaRepository.save(miPartidaObjeto);
@@ -88,6 +103,29 @@ public class PartidaService {
                 }
             }
         }
+        System.out.println("Terminando el partidaservice moverficha y about to return false");
         return false;
+    }
+
+    public List<TestFicha> getFichasJaque(EquipoFicha equipo, int idTablero){
+        //Todas las fichas del adversario que pongan en jaque a mi rey
+        Optional<Tablero> miTablero = tableroService.getById(idTablero);
+        Tablero miTableroObjeto = miTablero.get();
+        List<TestFicha> fichas = miTableroObjeto.getFichas();
+        List<TestFicha> fichasJaque = new ArrayList<TestFicha>();
+        EquipoFicha equipoOpuesto = null;
+        TestFicha rey = tableroService.getRey(equipo, idTablero);
+        for(TestFicha ficha : fichas){
+            if(ficha.getEquipo()!=equipo){
+                if(fichaService.esMovValido(rey.getPosX(), rey.getPosY(), ficha.getPosX(), ficha.getPosY(), idTablero)){
+                    fichasJaque.add(ficha);
+                }
+            }
+        }
+        return fichasJaque;
+    }
+
+    public boolean estaEnJaque(EquipoFicha equipo, int idTablero){
+        return(getFichasJaque(equipo, idTablero).size()>0);
     }
 }

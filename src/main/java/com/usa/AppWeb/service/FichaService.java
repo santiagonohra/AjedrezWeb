@@ -20,11 +20,13 @@ public class FichaService {
         boolean validez=false;
         TestFicha ficha = tableroService.getFichaPorPos(posIniX, posIniY, idTablero);
 
-        if(ficha==null){
+        /*if(ficha==null){
+            System.out.println("En ficha service si ficha es nula");
             return false;
-        }
+        }*/
 
         if(posIniX==posFinalX && posIniY==posFinalY){
+            System.out.println("Si los clicks son los mismos");
             return false;
         }
         if(ficha.getTipo()== TipoFicha.REY){
@@ -51,7 +53,7 @@ public class FichaService {
             return((Math.abs(posFinalX-posIniX)==Math.abs(posFinalY-posIniY)) && (esCaminoValido(ficha, posFinalX, posFinalY, idTablero)));
         }
         if(ficha.getTipo()==TipoFicha.PEON){
-            //                                                                                                          2 2    3 3
+            System.out.println("Ficha service soy un peon");
             if((Math.abs(posIniY-posFinalY)==1 && Math.abs(posIniX-posFinalX)==0) || (Math.abs(posFinalX-posIniX)==Math.abs((posIniY-posFinalY)) && Math.abs(posFinalX-posIniX)==1)){
 
                 if(ficha.getEquipo() == EquipoFicha.BLANCO){

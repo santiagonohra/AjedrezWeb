@@ -1,6 +1,55 @@
 
 var idTablero;
 var idTableroJSON;
+var idIni=null;
+var idFin=null;
+
+function registrarUsuario(){
+    let datos={
+        username: $("#userName").val(),
+        clave:$("#pwd").val(),
+        email:" ",
+    }
+    let misDatos=JSON.stringify(datos);
+    $.ajax({
+        dataType: 'json',
+        data: misDatos,
+        url:"http://localhost:8080/api/Usuario/save",
+        type:'POST',
+        contentType:'application/json',
+        success:function(response) {
+            mostrarUsuario();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert("f");
+        }
+    });
+}
+
+function mostrarUsuario(){
+    $.ajax({
+        dataType: 'json',
+        url:"http://localhost:8080/api/Usuario/all",
+        type:'GET',
+        contentType:'application/json',
+        success:function(response) {
+            printUsuario(response);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+}
+
+function printUsuario(r){
+    $("#misDatos").empty();
+    var t="";
+    for(let i=0;i<r.length;i++){
+        t+="Nombre de usuario: "+r[i].username+"<br>";
+    }
+
+    $("#misDatos").append(t)
+}
 
 function sendData(){
     //capturar Datos!
@@ -75,12 +124,23 @@ function getData(r){
     });
 }
 
-function hacerMovimiento(){
+function leerClicks(id){
+    if(idIni==null){
+        idIni=id;
+    }else if(idFin==null){
+        idFin=id;
+        hacerMovimiento(idIni, idFin);
+        idIni=null;
+        idFin=null;
+    }
+}
+
+function hacerMovimiento(ini, finPos){
     let miData={
-        posIX:$("#movIX").val(),
-        posIY:$("#movIY").val(),
-        posX:$("#movX").val(),
-        posY:$("#movY").val(),
+        posIX:ini.charAt(1),
+        posIY:ini.charAt(0),
+        posX:finPos.charAt(1),
+        posY:finPos.charAt(0),
         idTablero: idTablero
     };
     let miDataJSON = JSON.stringify(miData);
@@ -104,7 +164,7 @@ function paintTablero(){
 
     for(let i=1;i<9;i++){
         for (let j=1;j<9;j++){
-            tab+="<div style=\"display: inline;font-size:50px;\" id='"+i+j+"' > <span> ^️ </span> </div>";
+            tab+="<div onclick=\"leerClicks(this.id);\" style=\"display: inline;font-size:50px;\" id='"+i+j+"' > <span> ^️ </span> </div>";
 
         }
         tab+="<br>";

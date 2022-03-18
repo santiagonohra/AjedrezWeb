@@ -30,7 +30,6 @@ public class PartidaController {
 
     @PostMapping("/cargarPartida")
     public Partida cargarPartida(@RequestBody PartidaParam datos){
-        System.out.println(datos.getId());
         return partidaService.cargarPartida(datos.getId());
     }
 

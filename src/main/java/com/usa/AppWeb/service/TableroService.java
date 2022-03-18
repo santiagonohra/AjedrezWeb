@@ -26,17 +26,17 @@ public class TableroService {
 
     //Get ficha por pos del tablero con id tal
     public TestFicha getFichaPorPos(int posX, int posY, int idTablero){
-        TestFicha returnFicha=null;
         Optional<Tablero> miTablero = getById(idTablero);
         Tablero miTableroObjeto = miTablero.get();
         List<TestFicha> fichas = miTableroObjeto.getFichas();
 
         for(TestFicha ficha : fichas){
+            System.out.println("Buscando coordenadas iguales a "+posX+" "+posY);
             if(ficha.equalCoords(posX, posY)){
-                returnFicha = ficha;
+                return ficha;
             }
         }
-        return returnFicha;
+        return null;
     }
     public boolean moverFicha(int posIniX, int posIniY, int idTablero, int posFinalX, int posFinalY, EquipoFicha equipoMovimiento){
         Optional<Tablero> miTablero = getById(idTablero);
@@ -45,6 +45,11 @@ public class TableroService {
         List<TestFicha> fichas = miTableroObjeto.getFichas();
         TestFicha ficha1 = getFichaPorPos(posIniX, posIniY, idTablero);
         TestFicha ficha2 = getFichaPorPos(posFinalX, posFinalY, idTablero);
+        if(ficha2!=null) {
+            if (ficha2.getTipo() == TipoFicha.REY) {
+                return false;
+            }
+        }
 
         if(ficha1.getEquipo()!=equipoMovimiento){
             return false;
@@ -99,6 +104,19 @@ public class TableroService {
         }
         return false;
     }
+
+    public TestFicha getRey(EquipoFicha equipo, int idTablero){
+        Optional<Tablero> miTablero = getById(idTablero);
+        Tablero miTableroObjeto = miTablero.get();
+        List<TestFicha> fichas = miTableroObjeto.getFichas();
+        for(TestFicha ficha : fichas){
+            if(ficha.getEquipo()==equipo && ficha.getTipo()==TipoFicha.REY){
+                return ficha;
+            }
+        }
+        return null;
+    }
+
 
 
 
