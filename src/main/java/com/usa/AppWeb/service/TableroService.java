@@ -28,6 +28,7 @@ public class TableroService {
     public TestFicha getFichaPorPos(int posX, int posY, int idTablero){
         TestFicha returnFicha=null;
         Optional<Tablero> miTablero = getById(idTablero);
+        System.out.println(idTablero);
         Tablero miTableroObjeto = miTablero.get();
         List<TestFicha> fichas = miTableroObjeto.getFichas();
 

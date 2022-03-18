@@ -1,5 +1,5 @@
-var startPosition;
-var destinationPosition;
+var startPosition=null;
+var destinationPosition=null;
 
 function shotDown(){
     console.log('Esta en print tablero');
@@ -9,7 +9,7 @@ function shotDown(){
         for (let j=1;j<9;j++){
             //tab+="<div style=\"display: inline;font-size:50px;\" id='"+i+j+"' > <span> ^️ </span> </div>";
             if((i+j) % 2 == 0){
-                tab += "<div class=\"field black\" onclick=\"clicknm(this.id)\" id=\"" + i + "_" + j + "\"></div>";
+                tab += "<div  class=\"field black\" onclick=\"clicknm(this.id)\" id=\"" + i + "_" + j + "\"></div>";
             }else{
                 tab += "<div class=\"field white\" onclick=\"clicknm(this.id)\" id=\"" + i + "_" + j + "\"></div>";
             }
@@ -20,10 +20,13 @@ function shotDown(){
     console.log('Se mando esto: ' + tab);
 }
 
-function getPartida(){
+function getPartida(r){
     let p = {
         id: id,
         username: userName,
+    }
+    if(r==false){
+        alert("Movimiento invalido");
     }
 
     let miDatosJSON = JSON.stringify(p);
@@ -51,6 +54,7 @@ function paintFichas(r){
         "REY":'&#9813;',
         "CABALLO":'&#9816;'
     };
+    shotDown();
 
 
     for(let i=0;i<32;i++){
@@ -60,11 +64,11 @@ function paintFichas(r){
 
 function isCorrectMove(PosiI, PosiF){
     var movimiento = {
-        posIX: parseInt(PosiI.charAt(0)),
-        posIY: parseInt(PosiI.charAt(2)),
-        posX: parseInt(PosiF.charAt(0)),
-        posY: parseInt(PosiF.charAt(2)),
-        id: id
+        posIX: parseInt(PosiI.charAt(2)),
+        posIY: parseInt(PosiI.charAt(0)),
+        posX: parseInt(PosiF.charAt(2)),
+        posY: parseInt(PosiF.charAt(0)),
+        idTablero: id
     };
     console.log(movimiento.posIX + movimiento.posIY + movimiento.posX + movimiento.posY + movimiento.id);
 
@@ -73,7 +77,7 @@ function isCorrectMove(PosiI, PosiF){
         type: 'post',
         contentType: 'application/json',
         success: function (data) {
-            getPartida();
+            getPartida(data);
         },
         error: function () {
             console.log("error...");
@@ -86,14 +90,34 @@ function isCorrectMove(PosiI, PosiF){
 }
 
 function clicknm(id){
-    startPosition = null;
-    destinationPosition = null;
-
     if(startPosition == null) {
         startPosition = id;
     } else if(startPosition != null) {
         destinationPosition = id;
         console.log('destination = ' + destinationPosition);
         isCorrectMove(startPosition, destinationPosition);
+        startPosition=null;
+        destinationPosition=null;
     }
+}
+
+function unirse(){
+    let miData={
+        id: id,
+        userName: $("#userName").val()
+    }
+    miDatosJSON = JSON.stringify(miData);
+    $.ajax({
+        dataType: 'json',
+        data: miDatosJSON,
+        url:"http://localhost:8080/api/Partida/unirsePartida",
+        type:'POST',
+        contentType:'application/json',
+        success:function(response) {
+            alert("Se ha unido Dimelo123");
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+
+        }
+    });
 }

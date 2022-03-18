@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Partida")
+@CrossOrigin
 public class PartidaController {
     @Autowired
     private PartidaService partidaService;
@@ -47,9 +48,8 @@ public class PartidaController {
     }
 
     @PostMapping("/esValido")
-    @ResponseStatus(HttpStatus.CREATED)
     public boolean movimientoValido(@RequestBody MovimientoParam movimiento){
-
+        System.out.println("En partida controller /esValido id que llega :"+movimiento.getIdTablero()+movimiento.getPosX()+movimiento.getPosY());
         return partidaService.moverFicha(movimiento.getPosIX(), movimiento.getPosIY(), movimiento.getIdTablero(), movimiento.getPosX(), movimiento.getPosY());
     }
 

@@ -66,6 +66,7 @@ public class PartidaService {
 
     public Partida cargarPartida(int id){
         Optional<Partida> partidaCargada = partidaRepository.getById(id);
+        System.out.println("en partida service el id que llega es: "+id);
         return partidaCargada.get();
     }
 

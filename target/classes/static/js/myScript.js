@@ -13,6 +13,7 @@ function sendDataUser(){
         clave:$("#pwd").val(),
         claveConfirmacion:$("#pwdr").val(),
     }
+    userName=$("#userNameInicio").val();
 
     console.log("\n" + p.email + p.clave + p.username);
 
@@ -53,7 +54,6 @@ function getDataUser(){
         type:'GET',
         contentType:'application/json',
         success:function(response) {
-            console.log(response);
             paintDataUser(response);
         },
         error: function(jqXHR, textStatus, errorThrown) {
@@ -89,7 +89,8 @@ function paintDataUser(r){
         if (bandera == 1) {
             alert(`Bienvenido ${p.usernameLogin}`);
             bandera = 0;
-            location.href = "jugar.html";
+            location.href = "Jugar.html";
+            userName=$("#userNameInicio").val();
         }
         //$("#misDatos").append(t)
     }
