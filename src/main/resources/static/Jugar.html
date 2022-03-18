@@ -7,8 +7,7 @@
 
     <link href="css/myStyleJugar.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="js/myScript.js"></script>
-    <script src="./js/myScript.js"></script>
+    <script src="js/otherScript.js"></script>
     <title>UI Login</title>
 </head>
 <body>
@@ -23,11 +22,11 @@
         <div class="une_partida">
 
             <h2 style="text-align: center">Unirse a una partida existente</h2>
-            <input type="text" placeholder="Id de la partida" class="nombre">
+            <input id="idPartida" type="text" placeholder="Id de la partida" class="nombre">
 
             <div class="login-items">
 
-                <a href="tablero.html" ><button class="une_partida"><i class="unirsePartida" onclick="unirse()"></i> UNIRSE</button></a>
+                <a href="tablero.html" ><button class="une_partida"><i class="unirsePartida" onclick="unirse(this.id)"></i> UNIRSE</button></a>
             </div>
         </div>
     </div>

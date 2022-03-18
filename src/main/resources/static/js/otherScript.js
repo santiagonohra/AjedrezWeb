@@ -1,5 +1,10 @@
 var startPosition=null;
 var destinationPosition=null;
+userName = sessionStorage.getItem("userName")
+var id;
+
+crearPartida();
+
 
 function shotDown(){
     console.log('Esta en print tablero');
@@ -101,23 +106,46 @@ function clicknm(id){
     }
 }
 
-function unirse(){
-    let miData={
+function unirse(idParam) {
+    id=idParam;
+    let miData = {
         id: id,
-        userName: $("#userName").val()
-    }
+        userName: userName
+    };
     miDatosJSON = JSON.stringify(miData);
     $.ajax({
         dataType: 'json',
         data: miDatosJSON,
-        url:"http://localhost:8080/api/Partida/unirsePartida",
-        type:'POST',
-        contentType:'application/json',
-        success:function(response) {
+        url: "http://localhost:8080/api/Partida/unirsePartida",
+        type: 'POST',
+        contentType: 'application/json',
+        success: function (response) {
             alert("Se ha unido Dimelo123");
+            getPartida(response);
         },
-        error: function(jqXHR, textStatus, errorThrown) {
+        error: function (jqXHR, textStatus, errorThrown) {
 
         }
     });
 }
+function crearPartida() {
+        let nombreUsuario = JSON.stringify(userName);
+        $.ajax({
+            dataType: 'json',
+            data: nombreUsuario,
+            url: "http://localhost:8080/api/Partida/crear",
+            type: 'POST',
+            contentType: 'application/json',
+            success: function (response) {
+                ids(response);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("f");
+            }
+        });
+    }
+
+    function ids(r){
+        id = r.id;
+        getPartida();
+    }

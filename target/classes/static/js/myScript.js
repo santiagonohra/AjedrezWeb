@@ -1,6 +1,7 @@
 var userName;
 var id;
 
+
 function sendDataUser(){
     //capturar Datos!
     //document.getElementById("userName").value
@@ -64,6 +65,11 @@ function getDataUser(){
 function paintDataUser(r){
     $("#misDatos").empty();
     userName = $("#userNameInicio").val();
+
+    sessionStorage.setItem("userName", userName);
+    sessionStorage.setItem("userName", userName);
+    sessionStorage.setItem("userName", userName);
+    sessionStorage.setItem("userName", userName);
     let p={
         usernameLogin:$("#userNameInicio").val(),
         emailLogin:$("#emailLogin").val(),
@@ -96,24 +102,3 @@ function paintDataUser(r){
     }
 }
 
-function crearPartida() {
-    let nombreUsuario = JSON.stringify(userName);
-    $.ajax({
-        dataType: 'json',
-        data: nombreUsuario,
-        url: "http://localhost:8080/api/Partida/crear",
-        type: 'POST',
-        contentType: 'application/json',
-        success: function (response) {
-            ids(response);
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            alert("f");
-        }
-    });
-}
-
-function ids(r){
-    id = r.id;
-    getPartida();
-}
