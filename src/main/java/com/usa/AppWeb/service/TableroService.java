@@ -38,13 +38,17 @@ public class TableroService {
         }
         return returnFicha;
     }
-    public boolean moverFicha(int posIniX, int posIniY, int idTablero, int posFinalX, int posFinalY){
+    public boolean moverFicha(int posIniX, int posIniY, int idTablero, int posFinalX, int posFinalY, EquipoFicha equipoMovimiento){
         Optional<Tablero> miTablero = getById(idTablero);
         Tablero miTableroObjeto = miTablero.get();
         //Save hace update si le mando un objeto con ya predefined id
         List<TestFicha> fichas = miTableroObjeto.getFichas();
         TestFicha ficha1 = getFichaPorPos(posIniX, posIniY, idTablero);
         TestFicha ficha2 = getFichaPorPos(posFinalX, posFinalY, idTablero);
+
+        if(ficha1.getEquipo()!=equipoMovimiento){
+            return false;
+        }
         if((ficha1.getTipo()==TipoFicha.PEON && ficha2!=null && ficha1.getEquipo()!=ficha2.getEquipo()) && (Math.abs(posFinalX-posIniX)==Math.abs((posIniY-posFinalY)) && Math.abs(posFinalX-posIniX)==1)){
             return setFichaPorPos(posIniX, posIniY, idTablero, posFinalX, posFinalY, true);
         }
@@ -54,7 +58,6 @@ public class TableroService {
         }
 
         if((ficha1!=null && ficha2!=null) && (ficha1.getEquipo()!=ficha2.getEquipo())){
-            System.out.println("holi");
             return setFichaPorPos(posIniX, posIniY, idTablero, posFinalX, posFinalY, true);
         }
         if((ficha1!=null && ficha2==null)){
@@ -74,10 +77,8 @@ public class TableroService {
 
             TestFicha fichaPorEliminar = getFichaPorPos(posFinalX, posFinalY, idTablero);
 
-
             ficha1.setPosY(posFinalY);
             ficha1.setPosX(posFinalX);
-
 
             fichas.set(fichaIndex, ficha1);
 
