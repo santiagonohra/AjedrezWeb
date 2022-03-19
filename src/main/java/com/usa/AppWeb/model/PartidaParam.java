@@ -1,6 +1,6 @@
 package com.usa.AppWeb.model;
 
-//Clase para los parametros que reciben los metodos de controlador partida
+//Clase para los parametros que reciben los metodos de controlador partida //DTO
 public class PartidaParam {
     private int id;
     private String userName;

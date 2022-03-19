@@ -1,16 +1,11 @@
 package com.usa.AppWeb.service;
 
 import com.usa.AppWeb.model.*;
-import com.usa.AppWeb.repository.FichaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class FichaService {
-    @Autowired
-    private FichaRepository fichaRepository;
     @Autowired
     private TableroService tableroService;
 

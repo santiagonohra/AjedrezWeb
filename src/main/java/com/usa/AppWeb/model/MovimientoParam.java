@@ -1,5 +1,5 @@
 package com.usa.AppWeb.model;
-
+//DTO
 public class MovimientoParam {
     //TestFicha ficha;
     int posIX;

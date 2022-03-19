@@ -1,6 +1,6 @@
 package com.usa.AppWeb.model;
 import java.io.Serializable;
-
+//DTO
 public class Casilla {
     private int posX;
     private int posY;
